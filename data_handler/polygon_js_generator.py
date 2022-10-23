@@ -61,7 +61,15 @@ def parse_houses():
     with open("apartment_centers_south.json", 'r', encoding='utf-8') as file:
         file_info = file.read()
         dict_data = json.loads(file_info)
-        print(dict_data['center'])  # не работает, дописать
+
+        elements = dict_data['elements']
+        result = "var data = ["
+        for element in elements:
+            result += '[' + str(element['center']['lat']) + ',' + str(element['center']['lon']) + '], '
+
+        file_name = "data_for_js_file.txt"
+        f = open(file_name, 'x', encoding='utf-8')
+        f.write(result)
 
 
 def line_parse(line):
@@ -69,5 +77,5 @@ def line_parse(line):
 
 
 if __name__ == "__main__":
-    generate_js_files()
-    #parse_houses()
+    #generate_js_files()
+    parse_houses()
