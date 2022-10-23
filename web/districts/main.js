@@ -123,7 +123,6 @@ import {getPolygon121} from "./polygons/polygon121.js"
 import {getPolygon122} from "./polygons/polygon122.js"
 import {getPolygon123} from "./polygons/polygon123.js"
 import {getPolygon124} from "./polygons/polygon124.js"
-import {json_parser} from "./json_parser.js"
 
 
 ymaps.ready(init);
