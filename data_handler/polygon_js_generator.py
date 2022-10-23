@@ -29,7 +29,7 @@ export function getPolygonREPLACE_TO_I() {
 
 
 def generate_js_files():
-    with open('district_points.txt', encoding='utf-8') as file:
+    with open('district_points_OLD.txt', encoding='utf-8') as file:
         lines = file.readlines()
         coords_arr = []
         names = []
