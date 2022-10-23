@@ -1,0 +1,9 @@
+
+{
+  "name": "map-app",
+  "type": "module",
+  "dependencies": {
+    "require": "^2.4.20",
+    "xhr2": "^0.2.1"
+  }
+}
