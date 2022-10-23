@@ -55,7 +55,7 @@ def generate_js_files():
         info = info.replace("REPLACE_TO_NAME", names[i])
         info = info.replace("REPLACE_TO_COORDS", coords_arr[i])
         info = info.replace("REPLACE_TO_COLOR", color)
-        #f.write(info)
+        f.write(info)
 
 def parse_houses():
     with open("apartment_centers_south.json", 'r', encoding='utf-8') as file:
