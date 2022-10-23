@@ -767,11 +767,11 @@ export function getPolygon6() {
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
-        fillColor: '#00FF0012',
+        fillColor: '#00FF0062',
 
         // Ширина обводки.
         strokeColor: '#AA000050',
-        strokeWidth: 10
+        strokeWidth: 1
     });
     return myPolygon;
 }
