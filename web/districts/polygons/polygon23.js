@@ -189,7 +189,7 @@ export function getPolygon23() {
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
-        fillColor: '#BE20ED',
+        fillColor: '#0B520440',
 
         // Ширина обводки.
         strokeColor: '#AA000050',

@@ -109,7 +109,7 @@ export function getPolygon109() {
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
-        fillColor: '#2EC6A6',
+        fillColor: '#84722440',
 
         // Ширина обводки.
         strokeColor: '#AA000050',

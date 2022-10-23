@@ -222,7 +222,7 @@ export function getPolygon102() {
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
-        fillColor: '#419865',
+        fillColor: '#94C7A040',
 
         // Ширина обводки.
         strokeColor: '#AA000050',

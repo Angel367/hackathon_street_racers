@@ -696,7 +696,7 @@ export function getPolygon8() {
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
-        fillColor: '#9DBCE5',
+        fillColor: '#59555440',
 
         // Ширина обводки.
         strokeColor: '#AA000050',

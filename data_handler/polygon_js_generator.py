@@ -16,7 +16,7 @@ export function getPolygonREPLACE_TO_I() {
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
-        fillColor: 'REPLACE_TO_COLOR',
+        fillColor: 'REPLACE_TO_COLOR40',
 
         // Ширина обводки.
         strokeColor: '#AA000050',
