@@ -1,13 +1,5 @@
-ymaps.ready(init);
-
-function init() {
-    var myMap = new ymaps.Map("map", {
-        center: [55.73, 37.75],
-        zoom: 10
-    }, {
-        searchControlProvider: 'yandex#search'
-    });
-
+export function getPolygon1() {
+    const lines = fs.readFileSync('district_points.txt', 'utf8').split('\n');
     var myPolygon = new ymaps.Polygon([
         // Указываем координаты вершин многоугольника.
         // Координаты вершин внешнего контура.
@@ -27,11 +19,11 @@ function init() {
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
-        fillColor: '#00FF0088',
-        // Ширина обводки.
-        strokeWidth: 5
-    });
+        fillColor: '#00FF0012',
 
-    // Добавляем многоугольник на карту.
-    myMap.geoObjects.add(myPolygon);
+        // Ширина обводки.
+        strokeColor: '#AA000050',
+        strokeWidth: 10
+    });
+    return myPolygon;
 }
