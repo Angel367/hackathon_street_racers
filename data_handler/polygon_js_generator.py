@@ -1,4 +1,5 @@
 import re
+import random
 
 text = '''
 export function getPolygonREPLACE_TO_I() {
@@ -15,7 +16,7 @@ export function getPolygonREPLACE_TO_I() {
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
-        fillColor: '#00FF0062',
+        fillColor: 'REPLACE_TO_COLOR',
 
         // Ширина обводки.
         strokeColor: '#AA000050',
@@ -46,9 +47,12 @@ def generate_js_files():
     for i in range(0, len(names)):
         file_name = "polygon" + str(i) + ".js"
         f = open(file_name, 'x', encoding='utf-8')
+        r = lambda: random.randint(0, 255)
+        color = '#%02X%02X%02X' % (r(), r(), r())
         info = text.replace("REPLACE_TO_I", str(i))
         info = info.replace("REPLACE_TO_NAME", names[i])
         info = info.replace("REPLACE_TO_COORDS", coords_arr[i])
+        info = info.replace("REPLACE_TO_COLOR", color)
         f.write(info)
 
 

@@ -360,7 +360,7 @@ export function getPolygon98() {
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
-        fillColor: '#00FF0062',
+        fillColor: '#7212FC',
 
         // Ширина обводки.
         strokeColor: '#AA000050',
