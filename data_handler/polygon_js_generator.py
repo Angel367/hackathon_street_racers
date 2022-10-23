@@ -1,5 +1,6 @@
 import re
 import random
+import json
 
 text = '''
 export function getPolygonREPLACE_TO_I() {
@@ -26,6 +27,7 @@ export function getPolygonREPLACE_TO_I() {
 }
 '''
 
+
 def generate_js_files():
     with open('district_points.txt', encoding='utf-8') as file:
         lines = file.readlines()
@@ -45,15 +47,21 @@ def generate_js_files():
             names.append(district_name)
 
     for i in range(0, len(names)):
-        file_name = "polygon" + str(i) + ".js"
-        f = open(file_name, 'x', encoding='utf-8')
+        file_name = "polygons(to move)/polygon" + str(i) + ".js"
+        f = open(file_name, 'w', encoding='utf-8')
         r = lambda: random.randint(0, 255)
         color = '#%02X%02X%02X' % (r(), r(), r())
         info = text.replace("REPLACE_TO_I", str(i))
         info = info.replace("REPLACE_TO_NAME", names[i])
         info = info.replace("REPLACE_TO_COORDS", coords_arr[i])
         info = info.replace("REPLACE_TO_COLOR", color)
-        f.write(info)
+        #f.write(info)
+
+def parse_houses():
+    with open("apartment_centers_south.json", 'r', encoding='utf-8') as file:
+        file_info = file.read()
+        dict_data = json.loads(file_info)
+        print(dict_data['center'])  # не работает, дописать
 
 
 def line_parse(line):
@@ -62,3 +70,4 @@ def line_parse(line):
 
 if __name__ == "__main__":
     generate_js_files()
+    #parse_houses()
