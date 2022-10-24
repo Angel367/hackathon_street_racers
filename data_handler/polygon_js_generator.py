@@ -29,10 +29,21 @@ export function getPolygonREPLACE_TO_I() {
 
 
 def generate_js_files():
-    with open('district_points_OLD.txt', encoding='utf-8') as file:
-        lines = file.readlines()
+    with open('multipolygons.json', encoding='utf-8') as file:
+        data = json.load(file)
         coords_arr = []
         names = []
+
+        #for i in range(0, 150):
+         #   print('myMap.geoObjects.add(getPolygon'+str(i)+'());')
+        for i in data:
+            names.append(i)
+            coords_str = ""
+            for j in data[i]:
+                coords_str += str(j) + ',\n'
+            coords_arr.append(coords_str)
+        print(coords_str)
+        """
         for line in lines:
             coords = line_parse(line)
             coords_str = ""
@@ -45,6 +56,7 @@ def generate_js_files():
                     break
                 district_name += ch
             names.append(district_name)
+        """
 
     for i in range(0, len(names)):
         file_name = "polygons(to move)/polygon" + str(i) + ".js"
@@ -77,5 +89,5 @@ def line_parse(line):
 
 
 if __name__ == "__main__":
-    #generate_js_files()
-    parse_houses()
+    generate_js_files()
+    #parse_houses()
