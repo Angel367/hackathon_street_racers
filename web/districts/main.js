@@ -317,6 +317,4 @@ function init() {
     }
 
     json_parser(addHeatMap());
-
-
 }
