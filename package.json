@@ -1,9 +1,9 @@
-
 {
   "name": "map-app",
   "type": "module",
   "dependencies": {
-    "require": "^2.4.20",
+    "fs": "^0.0.1-security",
+    "require": "^0.4.4",
     "xhr2": "^0.2.1"
   }
 }

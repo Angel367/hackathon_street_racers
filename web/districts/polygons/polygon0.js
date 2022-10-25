@@ -694,7 +694,9 @@ export function getPolygon0() {
         // Координаты вершин внутреннего контура.
 
     ], {
-        hintContent: "район Внуково"
+        hintContent: "район Внуково",
+        balloonContent: "test",
+
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.

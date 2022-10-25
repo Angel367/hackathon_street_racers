@@ -145,6 +145,8 @@ import {getPolygon143} from "./polygons/polygon143.js"
 import {getPolygon144} from "./polygons/polygon144.js"
 import {getPolygon145} from "./polygons/polygon145.js"
 
+//import {json_parser} from "./json_parser.js";
+
 ymaps.ready(init);
 
 function init() {
@@ -314,7 +316,7 @@ function init() {
         });
     }
 
-
     json_parser(addHeatMap());
+
 
 }
