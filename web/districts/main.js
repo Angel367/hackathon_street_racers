@@ -316,7 +316,7 @@ function init() {
         });
     }
 
-    json_parser(addHeatMap());
+    //json_parser(addHeatMap());
 
 
 }
