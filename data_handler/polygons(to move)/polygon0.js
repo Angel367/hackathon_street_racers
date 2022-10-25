@@ -695,14 +695,11 @@ export function getPolygon0() {
 
     ], {
         hintContent: "район Внуково",
-        balloonContent: "test",
-
+        balloonContent: "24687"
     }, {
-        balloonCloseButton: false,
-        hintOpenTimeout: "1000",
         // Задаем опции геообъекта.
         // Цвет заливки.
-        fillColor: '#693F4540',
+        fillColor: '#F128EB40',
 
         // Ширина обводки.
         strokeColor: '#AA000050',

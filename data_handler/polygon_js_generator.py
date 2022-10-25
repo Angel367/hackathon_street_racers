@@ -13,7 +13,8 @@ export function getPolygonREPLACE_TO_I() {
         // Координаты вершин внутреннего контура.
 
     ], {
-        hintContent: "REPLACE_TO_NAME"
+        hintContent: "REPLACE_TO_NAME",
+        balloonContent: "REPLACE_TO_POPULATION"
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
@@ -33,16 +34,18 @@ def generate_js_files():
         data = json.load(file)
         coords_arr = []
         names = []
+        populations = []
 
-        #for i in range(0, 150):
-         #   print('myMap.geoObjects.add(getPolygon'+str(i)+'());')
         for i in data:
             names.append(i)
             coords_str = ""
             for j in data[i]:
                 coords_str += str(j) + ',\n'
             coords_arr.append(coords_str)
-        print(coords_str)
+        with open('district_population.txt', encoding='utf-8') as file_pop:
+            lines = file_pop.readlines()
+            for line in lines:
+                populations.append(re.findall(r'[0-9]+', line)[0])
         """
         for line in lines:
             coords = line_parse(line)
@@ -67,7 +70,9 @@ def generate_js_files():
         info = info.replace("REPLACE_TO_NAME", names[i])
         info = info.replace("REPLACE_TO_COORDS", coords_arr[i])
         info = info.replace("REPLACE_TO_COLOR", color)
+        info = info.replace("REPLACE_TO_POPULATION", populations[i])
         f.write(info)
+
 
 def parse_houses():
     with open("apartment_centers_south.json", 'r', encoding='utf-8') as file:
