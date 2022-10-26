@@ -14,7 +14,6 @@ export function getPolygonREPLACE_TO_I() {
 
     ], {
         hintContent: "REPLACE_TO_NAME",
-        balloonContent: "REPLACE_TO_POPULATION"
     }, {
         // Задаем опции геообъекта.
         // Цвет заливки.
@@ -30,7 +29,7 @@ export function getPolygonREPLACE_TO_I() {
 
 
 def generate_js_files():
-    with open('multipolygons.json', encoding='utf-8') as file:
+    with open('okruga_polygons.json', encoding='utf-8') as file:
         data = json.load(file)
         coords_arr = []
         names = []
@@ -62,7 +61,7 @@ def generate_js_files():
         """
 
     for i in range(0, len(names)):
-        file_name = "polygons(to move)/polygon" + str(i) + ".js"
+        file_name = "areas(to move)/polygon" + str(i) + ".js"
         f = open(file_name, 'w', encoding='utf-8')
         r = lambda: random.randint(0, 255)
         color = '#%02X%02X%02X' % (r(), r(), r())
