@@ -3,14 +3,23 @@ ymaps.ready(['polylabel.create']).then(function () {
 var textLayouts = {
     label: '<div style="background: rgba(255, 255, 255, 0.3);'+
         'border-radius: 50%;'+
-        'border: 6px solid rgb(239, 77, 77);'+
+        'border: 6px solid rgb(160,233,255);'+
+        'box-shadow: 0 0 5px rgb(160,233,255);'+
         'color: #FFF;'+
         'display: inline-block;'+
         'font-weight: bold;'+
         'line-height: 55px;'+
         'margin-right: 0;'+
         'text-align: center;'+
-        'width: 55px;height: 55px"<p>112212</p></div><div>Чертановский автономный округ</div>'
+        'font-family: Arial;'+
+        'width: 55px;height: 55px"<p>112212</p></div>' +
+        '<div style="color: white;'+
+        'font-family: Arial;'+
+        'font-size: 12px;'+
+        'font-weight: bold;'+
+        'text-align: center;'+
+        'text-shadow: 0 0 5px rgba(42,58,89,0.5);"'+
+        ' <p>Чертановский автономный округ</p></div>'
     //label: '<p style="border-radius: 50%;width: 54px;height: 54px;padding: 14px;background: rgba(255, 255, 255, 0.3);border: 8px solid rgb(239, 77, 77);color: rgb(255, 255, 255);text-align: justify;font: 24px Arial, sans-serif;">132153</p><div>{{properties.hintContent}}</div>',
         };
     var imgLayouts = {
@@ -60,13 +69,14 @@ var textLayouts = {
     }).then(function (result) {
             var options = {
                 // Стандартный вид текста будет темный с белой обводкой.
-                labelDefaults: 'light',
+                //labelDefaults: 'light',
                 // Макет подписи.
                 labelLayout: textLayouts.label,
                 // Цвет заливки.
-                fillColor: 'rgba(27, 125, 190, 0.5)',
+                //599EFF66
+                fillColor: 'rgba(64,122,206,0.45)',
                 // Цвет обводки.
-                strokeColor: 'rgba(255, 255, 255, 0.8)',
+                strokeColor: 'rgb(160,233,255)',
                 // Отключим показ всплывающей подсказки при наведении на полигон.
                 openHintOnHover: false,
                 // Размер текста подписей зависит от масштаба.
@@ -75,7 +85,8 @@ var textLayouts = {
                 cursor: 'grab',
                 labelDotCursor: 'pointer',
                 // Допустимая погрешность в расчете вместимости подписи в полигон.
-                labelPermissibleInaccuracyOfVisibility: 4
+                labelPermissibleInaccuracyOfVisibility: 4,
+                labelDotLayout: '<div style="background: #a0e9ff;width: 10px; height: 10px; border-radius: 5px;"></div>',
             };
             // Добавляем полигоны в менеджер объектов.
             objectManager.add(result.features.map(function (feature) {
