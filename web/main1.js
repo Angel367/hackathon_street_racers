@@ -19,7 +19,7 @@ var textLayouts = {
         'font-weight: bold;'+
         'text-align: center;'+
         'text-shadow: 0 0 5px rgba(42,58,89,0.5);"'+
-        ' <p>Чертановский автономный округ</p></div>'
+        ' <p>'+'Чертановский автономный округ</p></div>'
     //label: '<p style="border-radius: 50%;width: 54px;height: 54px;padding: 14px;background: rgba(255, 255, 255, 0.3);border: 8px solid rgb(239, 77, 77);color: rgb(255, 255, 255);text-align: justify;font: 24px Arial, sans-serif;">132153</p><div>{{properties.hintContent}}</div>',
         };
     var imgLayouts = {

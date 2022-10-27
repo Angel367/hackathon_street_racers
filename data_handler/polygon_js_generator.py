@@ -3,33 +3,62 @@ import random
 import json
 
 text = '''
-export function getPolygonREPLACE_TO_I() {
-    var myPolygon = new ymaps.Polygon([
-        // Указываем координаты вершин многоугольника.
-        // Координаты вершин внешнего контура.
-        [
-            REPLACE_TO_COORDS
-        ],
-        // Координаты вершин внутреннего контура.
+export function get_polygonREPLACE_TO_I(){
+    return ({
+        type: 'Feature',
+        id: REPLACE_TO_I,
+        geometry: {
+            type: 'Polygon',
+            coordinates: [[
+                REPLACE_TO_COORDS
+            ]]
+        },
+        properties: {
+            name: 'REPLACE_TO_NAME'
+        },
+        options: {
+            labelDefaults: 'light',
+            labelLayout: '<div style="background: rgba(255, 255, 255, 0.3);'+
+        'border-radius: 50%;'+
+        'border: 6px solid rgb(160,233,255);'+
+        'box-shadow: 0 0 5px rgb(160,233,255);'+
+        'color: #FFF;'+
+        'display: inline-block;'+
+        'font-weight: bold;'+
+        'line-height: 55px;'+
+        'margin-right: 0;'+
+        'text-align: center;'+
+        'font-family: Arial;'+
+        'width: 55px;height: 55px"<p>REPLACE_TO_POPULATION</p></div>' +
+        '<div style="color: white;'+
+        'font-family: Arial;'+
+        'font-size: 12px;'+
+        'font-weight: bold;'+
+        'text-align: center;'+
+        'text-shadow: 0 0 5px rgba(42,58,89,0.5);"'+
+        ' <p>'+'REPLACE_TO_NAME</p></div>',
+                                    fillColor: 'rgba(64,122,206,0.45)',
+                // Цвет обводки.
+                strokeColor: 'rgb(160,233,255)',
+                // Отключим показ всплывающей подсказки при наведении на полигон.
+                openHintOnHover: false,
+                // Размер текста подписей зависит от масштаба.
+                // На уровнях зума 3-6 размер текста равен 12, а на уровнях зума 7-18 равен 14.
+                labelTextSize: {'3_6': 12, '7_18': 14},
+                cursor: 'grab',
+                labelDotCursor: 'pointer',
+                // Допустимая погрешность в расчете вместимости подписи в полигон.
+                labelPermissibleInaccuracyOfVisibility: 4,
+                labelDotLayout: '<div style="background: #a0e9ff;width: 10px; height: 10px; border-radius: 5px;"></div>',
+        },
 
-    ], {
-        hintContent: "REPLACE_TO_NAME",
-    }, {
-        // Задаем опции геообъекта.
-        // Цвет заливки.
-        fillColor: 'REPLACE_TO_COLOR40',
-
-        // Ширина обводки.
-        strokeColor: '#AA000050',
-        strokeWidth: 1
     });
-    return myPolygon;
 }
 '''
 
 
 def generate_js_files():
-    with open('okruga_polygons.json', encoding='utf-8') as file:
+    with open('multipolygons.json', encoding='utf-8') as file:
         data = json.load(file)
         coords_arr = []
         names = []
@@ -45,20 +74,6 @@ def generate_js_files():
             lines = file_pop.readlines()
             for line in lines:
                 populations.append(re.findall(r'[0-9]+', line)[0])
-        """
-        for line in lines:
-            coords = line_parse(line)
-            coords_str = ""
-            for i in range(0, len(coords), 2):
-                coords_str += ('[' + coords[i] + ',' + coords[i+1] + ']' + ',\n')
-            coords_arr.append(coords_str)
-            district_name = ""
-            for ch in line:
-                if ch == '(':
-                    break
-                district_name += ch
-            names.append(district_name)
-        """
 
     for i in range(0, len(names)):
         file_name = "areas(to move)/polygon" + str(i) + ".js"
