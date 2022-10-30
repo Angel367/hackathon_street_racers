@@ -1,10 +1,12 @@
 
-export function getPolygon31() {
-    var myPolygon = new ymaps.Polygon([
-        // Указываем координаты вершин многоугольника.
-        // Координаты вершин внешнего контура.
-        [
-            [55.8791079, 37.6075412],
+export function getPolygon31(){
+    return ({
+        type: 'Feature',
+        id: 31,
+        geometry: {
+            type: 'Polygon',
+            coordinates: [[
+                [55.8791079, 37.6075412],
 [55.8772025, 37.5977658],
 [55.8764897, 37.5941091],
 [55.8759405, 37.5916188],
@@ -279,19 +281,46 @@ export function getPolygon31() {
 [55.8795739, 37.6085761],
 [55.8791079, 37.6075412],
 
-        ],
-        // Координаты вершин внутреннего контура.
+            ]]
+        },
+        properties: {
+            name: 'район Отрадное'
+        },
+        options: {
+            labelDefaults: 'light',
+            labelLayout: '<div style="background: rgba(255, 255, 255, 0.3);'+
+        'border-radius: 50%;'+
+        'border: 6px solid rgb(160,233,255);'+
+        'box-shadow: 0 0 5px rgb(160,233,255);'+
+        'color: #FFF;'+
+        'display: inline-block;'+
+        'font-weight: bold;'+
+        'line-height: 55px;'+
+        'margin-right: 0;'+
+        'text-align: center;'+
+        'font-family: Arial;'+
+        'width: 55px;height: 55px"<p>185218</p></div>' +
+        '<div style="color: white;'+
+        'font-family: Arial;'+
+        'font-size: 12px;'+
+        'font-weight: bold;'+
+        'text-align: center;'+
+        'text-shadow: 0 0 5px rgba(42,58,89,0.5);"'+
+        ' <p>'+'район Отрадное</p></div>',
+                                    fillColor: 'rgba(64,122,206,0.45)',
+                // Цвет обводки.
+                strokeColor: 'rgb(160,233,255)',
+                // Отключим показ всплывающей подсказки при наведении на полигон.
+                openHintOnHover: false,
+                // Размер текста подписей зависит от масштаба.
+                // На уровнях зума 3-6 размер текста равен 12, а на уровнях зума 7-18 равен 14.
+                labelTextSize: {'3_6': 12, '7_18': 14},
+                cursor: 'grab',
+                labelDotCursor: 'pointer',
+                // Допустимая погрешность в расчете вместимости подписи в полигон.
+                labelPermissibleInaccuracyOfVisibility: 4,
+                labelDotLayout: '<div style="background: #a0e9ff;width: 10px; height: 10px; border-radius: 5px;"></div>',
+        },
 
-    ], {
-        hintContent: "район Отрадное"
-    }, {
-        // Задаем опции геообъекта.
-        // Цвет заливки.
-        fillColor: '#B297B440',
-
-        // Ширина обводки.
-        strokeColor: '#AA000050',
-        strokeWidth: 1
     });
-    return myPolygon;
 }

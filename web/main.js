@@ -15,8 +15,9 @@ ymaps.ready(['polylabel.create']).then(function () {
     const areas_arr = get_areas_arr();
     function add_districts(){
         district_arr.forEach(function (item, i, district_arr) {
-        myMap.geoObjects.add(item);
+        objectManager.add(item);
     });
+         myMap.geoObjects.add(objectManager);
     }
 
     function remove_districts(){

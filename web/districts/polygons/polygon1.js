@@ -1,10 +1,12 @@
 
-export function getPolygon1() {
-    var myPolygon = new ymaps.Polygon([
-        // Указываем координаты вершин многоугольника.
-        // Координаты вершин внешнего контура.
-        [
-            [55.8083657, 37.3786411],
+export function getPolygon1(){
+    return ({
+        type: 'Feature',
+        id: 1,
+        geometry: {
+            type: 'Polygon',
+            coordinates: [[
+                [55.8083657, 37.3786411],
 [55.8091485, 37.3793921],
 [55.8090609, 37.3797943],
 [55.8090092, 37.3806179],
@@ -1673,19 +1675,46 @@ export function getPolygon1() {
 [55.7483591, 36.9093876],
 [55.7487516, 36.9080791],
 
-        ],
-        // Координаты вершин внутреннего контура.
+            ]]
+        },
+        properties: {
+            name: 'район Кунцево'
+        },
+        options: {
+            labelDefaults: 'light',
+            labelLayout: '<div style="background: rgba(255, 255, 255, 0.3);'+
+        'border-radius: 50%;'+
+        'border: 6px solid rgb(160,233,255);'+
+        'box-shadow: 0 0 5px rgb(160,233,255);'+
+        'color: #FFF;'+
+        'display: inline-block;'+
+        'font-weight: bold;'+
+        'line-height: 55px;'+
+        'margin-right: 0;'+
+        'text-align: center;'+
+        'font-family: Arial;'+
+        'width: 55px;height: 55px"<p>150344</p></div>' +
+        '<div style="color: white;'+
+        'font-family: Arial;'+
+        'font-size: 12px;'+
+        'font-weight: bold;'+
+        'text-align: center;'+
+        'text-shadow: 0 0 5px rgba(42,58,89,0.5);"'+
+        ' <p>'+'район Кунцево</p></div>',
+                                    fillColor: 'rgba(64,122,206,0.45)',
+                // Цвет обводки.
+                strokeColor: 'rgb(160,233,255)',
+                // Отключим показ всплывающей подсказки при наведении на полигон.
+                openHintOnHover: false,
+                // Размер текста подписей зависит от масштаба.
+                // На уровнях зума 3-6 размер текста равен 12, а на уровнях зума 7-18 равен 14.
+                labelTextSize: {'3_6': 12, '7_18': 14},
+                cursor: 'grab',
+                labelDotCursor: 'pointer',
+                // Допустимая погрешность в расчете вместимости подписи в полигон.
+                labelPermissibleInaccuracyOfVisibility: 4,
+                labelDotLayout: '<div style="background: #a0e9ff;width: 10px; height: 10px; border-radius: 5px;"></div>',
+        },
 
-    ], {
-        hintContent: "район Кунцево"
-    }, {
-        // Задаем опции геообъекта.
-        // Цвет заливки.
-        fillColor: '#52520140',
-
-        // Ширина обводки.
-        strokeColor: '#AA000050',
-        strokeWidth: 1
     });
-    return myPolygon;
 }

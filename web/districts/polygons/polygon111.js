@@ -1,10 +1,12 @@
 
-export function getPolygon111() {
-    var myPolygon = new ymaps.Polygon([
-        // Указываем координаты вершин многоугольника.
-        // Координаты вершин внешнего контура.
-        [
-            [55.7064227, 37.587522],
+export function getPolygon111(){
+    return ({
+        type: 'Feature',
+        id: 111,
+        geometry: {
+            type: 'Polygon',
+            coordinates: [[
+                [55.7064227, 37.587522],
 [55.7065411, 37.5877268],
 [55.7071218, 37.5887529],
 [55.7088144, 37.5853646],
@@ -127,19 +129,46 @@ export function getPolygon111() {
 [55.7063265, 37.5873424],
 [55.7064227, 37.587522],
 
-        ],
-        // Координаты вершин внутреннего контура.
+            ]]
+        },
+        properties: {
+            name: 'Гагаринский район'
+        },
+        options: {
+            labelDefaults: 'light',
+            labelLayout: '<div style="background: rgba(255, 255, 255, 0.3);'+
+        'border-radius: 50%;'+
+        'border: 6px solid rgb(160,233,255);'+
+        'box-shadow: 0 0 5px rgb(160,233,255);'+
+        'color: #FFF;'+
+        'display: inline-block;'+
+        'font-weight: bold;'+
+        'line-height: 55px;'+
+        'margin-right: 0;'+
+        'text-align: center;'+
+        'font-family: Arial;'+
+        'width: 55px;height: 55px"<p>81420</p></div>' +
+        '<div style="color: white;'+
+        'font-family: Arial;'+
+        'font-size: 12px;'+
+        'font-weight: bold;'+
+        'text-align: center;'+
+        'text-shadow: 0 0 5px rgba(42,58,89,0.5);"'+
+        ' <p>'+'Гагаринский район</p></div>',
+                                    fillColor: 'rgba(64,122,206,0.45)',
+                // Цвет обводки.
+                strokeColor: 'rgb(160,233,255)',
+                // Отключим показ всплывающей подсказки при наведении на полигон.
+                openHintOnHover: false,
+                // Размер текста подписей зависит от масштаба.
+                // На уровнях зума 3-6 размер текста равен 12, а на уровнях зума 7-18 равен 14.
+                labelTextSize: {'3_6': 12, '7_18': 14},
+                cursor: 'grab',
+                labelDotCursor: 'pointer',
+                // Допустимая погрешность в расчете вместимости подписи в полигон.
+                labelPermissibleInaccuracyOfVisibility: 4,
+                labelDotLayout: '<div style="background: #a0e9ff;width: 10px; height: 10px; border-radius: 5px;"></div>',
+        },
 
-    ], {
-        hintContent: "Гагаринский район"
-    }, {
-        // Задаем опции геообъекта.
-        // Цвет заливки.
-        fillColor: '#09072240',
-
-        // Ширина обводки.
-        strokeColor: '#AA000050',
-        strokeWidth: 1
     });
-    return myPolygon;
 }

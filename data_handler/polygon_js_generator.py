@@ -3,7 +3,7 @@ import random
 import json
 
 text = '''
-export function get_polygonREPLACE_TO_I(){
+export function getPolygonREPLACE_TO_I(){
     return ({
         type: 'Feature',
         id: REPLACE_TO_I,

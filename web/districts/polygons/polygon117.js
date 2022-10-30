@@ -1,10 +1,12 @@
 
-export function getPolygon117() {
-    var myPolygon = new ymaps.Polygon([
-        // Указываем координаты вершин многоугольника.
-        // Координаты вершин внешнего контура.
-        [
-            [55.6690846, 37.4972781],
+export function getPolygon117(){
+    return ({
+        type: 'Feature',
+        id: 117,
+        geometry: {
+            type: 'Polygon',
+            coordinates: [[
+                [55.6690846, 37.4972781],
 [55.6700349, 37.4925769],
 [55.669943, 37.4909825],
 [55.6698262, 37.4906555],
@@ -211,19 +213,46 @@ export function getPolygon117() {
 [55.6690183, 37.4974956],
 [55.6690846, 37.4972781],
 
-        ],
-        // Координаты вершин внутреннего контура.
+            ]]
+        },
+        properties: {
+            name: 'Тропарёво-Никулино'
+        },
+        options: {
+            labelDefaults: 'light',
+            labelLayout: '<div style="background: rgba(255, 255, 255, 0.3);'+
+        'border-radius: 50%;'+
+        'border: 6px solid rgb(160,233,255);'+
+        'box-shadow: 0 0 5px rgb(160,233,255);'+
+        'color: #FFF;'+
+        'display: inline-block;'+
+        'font-weight: bold;'+
+        'line-height: 55px;'+
+        'margin-right: 0;'+
+        'text-align: center;'+
+        'font-family: Arial;'+
+        'width: 55px;height: 55px"<p>122663</p></div>' +
+        '<div style="color: white;'+
+        'font-family: Arial;'+
+        'font-size: 12px;'+
+        'font-weight: bold;'+
+        'text-align: center;'+
+        'text-shadow: 0 0 5px rgba(42,58,89,0.5);"'+
+        ' <p>'+'Тропарёво-Никулино</p></div>',
+                                    fillColor: 'rgba(64,122,206,0.45)',
+                // Цвет обводки.
+                strokeColor: 'rgb(160,233,255)',
+                // Отключим показ всплывающей подсказки при наведении на полигон.
+                openHintOnHover: false,
+                // Размер текста подписей зависит от масштаба.
+                // На уровнях зума 3-6 размер текста равен 12, а на уровнях зума 7-18 равен 14.
+                labelTextSize: {'3_6': 12, '7_18': 14},
+                cursor: 'grab',
+                labelDotCursor: 'pointer',
+                // Допустимая погрешность в расчете вместимости подписи в полигон.
+                labelPermissibleInaccuracyOfVisibility: 4,
+                labelDotLayout: '<div style="background: #a0e9ff;width: 10px; height: 10px; border-radius: 5px;"></div>',
+        },
 
-    ], {
-        hintContent: "Тропарёво-Никулино"
-    }, {
-        // Задаем опции геообъекта.
-        // Цвет заливки.
-        fillColor: '#EC31FA40',
-
-        // Ширина обводки.
-        strokeColor: '#AA000050',
-        strokeWidth: 1
     });
-    return myPolygon;
 }
