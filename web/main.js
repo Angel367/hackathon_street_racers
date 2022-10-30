@@ -1,7 +1,6 @@
 import {add_heat_map} from "./districts/add_heat_map.js";
-import {get_district_arr} from "./districts/get_district_arr.js";
+import {get_polylabel_arr} from "./districts/get_polylabel_arr.js";
 import {get_areas_arr} from "./areas/get_areas_arr.js";
-import {get_polygon0} from "./districts/polygons/polygon00.js";
 
 ymaps.ready(['polylabel.create']).then(function () {
     const myMap = new ymaps.Map("map", {
@@ -11,7 +10,7 @@ ymaps.ready(['polylabel.create']).then(function () {
         searchControlProvider: 'yandex#search'
     });
 
-    const district_arr = get_district_arr();
+    const district_arr = get_polylabel_arr();
     const areas_arr = get_areas_arr();
     function add_districts(){
         district_arr.forEach(function (item, i, district_arr) {

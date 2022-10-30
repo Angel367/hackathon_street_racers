@@ -3,7 +3,7 @@ import random
 import json
 
 text = '''
-export function getPolygonREPLACE_TO_I(){
+export function get_polylabelREPLACE_TO_I(){
     return ({
         type: 'Feature',
         id: REPLACE_TO_I,
@@ -76,7 +76,7 @@ def generate_js_files():
                 populations.append(re.findall(r'[0-9]+', line)[0])
 
     for i in range(0, len(names)):
-        file_name = "areas(to move)/polygon" + str(i) + ".js"
+        file_name = "areas(to move)/polylabel" + str(i) + ".js"
         f = open(file_name, 'w', encoding='utf-8')
         r = lambda: random.randint(0, 255)
         color = '#%02X%02X%02X' % (r(), r(), r())
