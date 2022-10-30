@@ -17,6 +17,7 @@ ymaps.ready(['polylabel.create']).then(function () {
         objectManager.add(item);
     });
          myMap.geoObjects.add(objectManager);
+         const polylabel = new ymaps.polylabel.create(myMap, objectManager);
     }
 
     function remove_districts(){
@@ -53,11 +54,6 @@ ymaps.ready(['polylabel.create']).then(function () {
             remove_areas();
         }
     }
-const objectManager = new ymaps.ObjectManager();
-    let polylabel0 = get_polygon0()
-    objectManager.add(polylabel0);
-    myMap.geoObjects.add(objectManager);
-    const polylabel = new ymaps.polylabel.create(myMap, objectManager);
 
 
 
