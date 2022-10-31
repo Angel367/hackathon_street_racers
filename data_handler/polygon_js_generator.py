@@ -181,6 +181,6 @@ def line_parse(line):
 
 
 if __name__ == "__main__":
-    create_hexagon_grid_coords()
+    print(create_hexagon_grid_coords(1, 1, 4, 4, 3))
     #generate_js_files()
     #parse_houses()
