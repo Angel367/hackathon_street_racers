@@ -10,29 +10,21 @@ ymaps.ready(['polylabel.create']).then(function () {
         searchControlProvider: 'yandex#search'
     });
 
-    const district_arr = get_polylabel_arr();
+    const objectManager = new ymaps.ObjectManager();
+    let polylabel;
+    const polylabel_arr = get_polylabel_arr();
+    polylabel_arr.forEach(function (item, i, district_arr) {
+            objectManager.add(item);
+    })
     const areas_arr = get_areas_arr();
-    function add_districts(){
-        district_arr.forEach(function (item, i, district_arr) {
-        objectManager.add(item);
-    });
-         myMap.geoObjects.add(objectManager);
-         const polylabel = new ymaps.polylabel.create(myMap, objectManager);
-    }
 
-    function remove_districts(){
-        district_arr.forEach(function (item, i, district_arr) {
-        myMap.geoObjects.remove(item);
-    });
-    }
-
-        function add_areas(){
+    function add_areas() {
         areas_arr.forEach(function (item, i, district_arr) {
         myMap.geoObjects.add(item);
     });
     }
 
-    function remove_areas(){
+    function remove_areas() {
         areas_arr.forEach(function (item, i, district_arr) {
         myMap.geoObjects.remove(item);
     });
@@ -40,13 +32,23 @@ ymaps.ready(['polylabel.create']).then(function () {
 
     document.getElementById("districts").onchange = function () {
         if(document.getElementById("districts").checked) {
-            add_districts();
+            myMap.geoObjects.add(objectManager);
+            //polylabel = new ymaps.polylabel.create(myMap, objectManager);
         }
         else {
-            remove_districts();
+            //polylabel.destroy()
+            myMap.geoObjects.remove(objectManager);
         }
     }
-        document.getElementById("areas").onchange = function () {
+    document.getElementById("population").onchange = function () {
+        if(document.getElementById("population").checked) {
+            polylabel = new ymaps.polylabel.create(myMap, objectManager);
+        }
+        else {
+            polylabel.destroy()
+        }
+    }
+    document.getElementById("areas").onchange = function () {
         if(document.getElementById("areas").checked) {
             add_areas();
         }
@@ -54,9 +56,6 @@ ymaps.ready(['polylabel.create']).then(function () {
             remove_areas();
         }
     }
-
-
-
 
     myMap.events.add('boundschange', function (event) {
     if (event.get('newZoom') !== event.get('oldZoom')) {    // Ловим изменение "зума" карты

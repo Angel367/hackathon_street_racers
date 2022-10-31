@@ -770,6 +770,7 @@ export function get_polylabel135(){
                                     fillColor: 'rgba(64,122,206,0.45)',
                 // Цвет обводки.
                 strokeColor: 'rgb(160,233,255)',
+                strokeWidth: '2',
                 // Отключим показ всплывающей подсказки при наведении на полигон.
                 openHintOnHover: false,
                 // Размер текста подписей зависит от масштаба.
