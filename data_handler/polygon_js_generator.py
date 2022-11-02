@@ -180,7 +180,22 @@ def line_parse(line):
     return re.findall(r'\d+\.\d+', line)
 
 
+def json_test_parse():
+    with open('postamats_yandex_coords.json', encoding='utf-8') as file:
+        data = json.load(file)
+        d = {}
+        for i in data:
+            #print(i)
+            d[i[0]] = i[1]
+
+        print(d)
+        with open('postamats_yandex_coords_final.json', 'w', encoding='utf-8') as file1:
+            json_data = json.dumps([{'id': k, 'coordinates': v} for k,v in d.items()], indent=4)
+            file1.write(json_data)
+
+
 if __name__ == "__main__":
-    print(create_hexagon_grid_coords(1, 1, 4, 4, 3))
+    json_test_parse()
+    #(create_hexagon_grid_coords(1, 1, 4, 4, 3))
     #generate_js_files()
     #parse_houses()
