@@ -1,6 +1,7 @@
 import {add_heat_map} from "./districts/add_heat_map.js";
 import {get_polylabel_arr} from "./districts/get_polylabel_arr.js";
 import {get_areas_arr} from "./areas/get_areas_arr.js";
+import {add_heat_map_postamats1} from "./districts/test.js";
 
 ymaps.ready(['polylabel.create']).then(function () {
     const myMap = new ymaps.Map("map", {
@@ -62,7 +63,7 @@ ymaps.ready(['polylabel.create']).then(function () {
         //alert('Уровень масштабирования изменился.');
 
     }
-        add_heat_map(myMap);
+    add_heat_map_postamats1(myMap);
 
 });})
 
