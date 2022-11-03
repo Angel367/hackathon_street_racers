@@ -62,10 +62,10 @@ ymaps.ready(['polylabel.create']).then(function () {
         //alert('Уровень масштабирования изменился.');
 
     }
-
+        add_heat_map(myMap);
 
 });})
 
 
-    //add_heat_map(myMap);
+
 
