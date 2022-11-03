@@ -1,7 +1,8 @@
-import {add_heat_map} from "./districts/add_heat_map.js";
+import {add_heat_map} from "./heatmaps/add_heat_map.js";
 import {get_polylabel_arr} from "./districts/get_polylabel_arr.js";
 import {get_areas_arr} from "./areas/get_areas_arr.js";
-import {get_postamats_data} from "./districts/get_postamats_data.js";
+import {get_postamats_data} from "./heatmaps/postamats/get_postamats_data.js";
+import {get_houses_data} from "./heatmaps/houses/get_houses_data.js";
 
 ymaps.ready(['polylabel.create']).then(function () {
     const myMap = new ymaps.Map("map", {
@@ -18,7 +19,9 @@ ymaps.ready(['polylabel.create']).then(function () {
             objectManager.add(item);
     })
     const areas_arr = get_areas_arr();
-    const data1 = get_postamats_data()
+    const postamats_data = get_postamats_data()
+    const houses_data = get_houses_data()
+
 
     function add_areas() {
         areas_arr.forEach(function (item, i, district_arr) {
@@ -59,10 +62,40 @@ ymaps.ready(['polylabel.create']).then(function () {
         }
     }
     ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
-        var data = data1,
+        var data = postamats_data,
         heatmap = new Heatmap(data);
         document.getElementById("heat_map_postamats").onchange = function () {
             if(document.getElementById("heat_map_postamats").checked) {
+                heatmap.setMap(myMap)
+            }
+            else {
+                heatmap.destroy()
+            }
+        }
+    });
+    ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
+        var data = houses_data,
+            heatmap = new Heatmap(data, {
+                /*
+                // Радиус влияния.
+                radius: 15,
+                // Нужно ли уменьшать пиксельный размер точек при уменьшении зума. False - не нужно.
+                dissipating: false,
+                // Прозрачность тепловой карты.
+                opacity: 0.8,
+                // Прозрачность у медианной по весу точки.
+                intensityOfMidpoint: 0.2,
+                // JSON описание градиента.
+                gradient: {
+                    0.1: 'rgba(128, 255, 0, 0.7)',
+                    0.2: 'rgba(255, 255, 0, 0.8)',
+                    0.7: 'rgba(234, 72, 58, 0.9)',
+                    1.0: 'rgba(162, 36, 25, 1)'
+                }
+                */
+            });
+        document.getElementById("heat_map_houses").onchange = function () {
+            if(document.getElementById("heat_map_houses").checked) {
                 heatmap.setMap(myMap)
             }
             else {
