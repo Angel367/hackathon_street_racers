@@ -76,13 +76,13 @@ ymaps.ready(['polylabel.create']).then(function () {
     ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
         var data = houses_data,
             heatmap = new Heatmap(data, {
-                /*
+                
                 // Радиус влияния.
-                radius: 15,
+                radius: 10,
                 // Нужно ли уменьшать пиксельный размер точек при уменьшении зума. False - не нужно.
                 dissipating: false,
                 // Прозрачность тепловой карты.
-                opacity: 0.8,
+                /*opacity: 0.8,
                 // Прозрачность у медианной по весу точки.
                 intensityOfMidpoint: 0.2,
                 // JSON описание градиента.
@@ -102,19 +102,16 @@ ymaps.ready(['polylabel.create']).then(function () {
                 heatmap.destroy()
             }
         }
+        myMap.events.add('boundschange', function (event) {
+            if (event.get('newZoom') !== event.get('oldZoom')) {    // Ловим изменение "зума" карты
+                heatmap.options.set('radius', Math.pow(2.1,(event.get('newZoom')/1.7-3)));
+            }
+            get_postamats_data(myMap);
+        
+        });
+        
     });
-
-
-
-
-    myMap.events.add('boundschange', function (event) {
-    if (event.get('newZoom') !== event.get('oldZoom')) {    // Ловим изменение "зума" карты
-        //alert('Уровень масштабирования изменился.');
-
-    }
-    get_postamats_data(myMap);
-
-});})
+    })
 
 
 
