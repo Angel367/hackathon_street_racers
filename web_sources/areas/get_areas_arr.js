@@ -7,7 +7,6 @@ import {getPolygon5} from "./polygons/polygon5.js"
 import {getPolygon6} from "./polygons/polygon6.js"
 import {getPolygon7} from "./polygons/polygon7.js"
 import {getPolygon8} from "./polygons/polygon8.js"
-import {getPolygon9} from "./polygons/polygon9.js"
 
 
 export function get_areas_arr(){
@@ -21,7 +20,6 @@ export function get_areas_arr(){
     areasArr.push(getPolygon6());
     areasArr.push(getPolygon7());
     areasArr.push(getPolygon8());
-    areasArr.push(getPolygon9());
 
     return areasArr;
 }
