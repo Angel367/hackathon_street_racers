@@ -1,4 +1,4 @@
-import * as houses_json from './apartment_final.json' assert {type: 'json'};
+import * as houses_json from './full_house_final.json' assert {type: 'json'};
 
 export function get_houses_data() {
     let t = houses_json
