@@ -72,27 +72,16 @@ ymaps.ready(['polylabel.create']).then(function () {
                 heatmap.destroy()
             }
         }
+        myMap.events.add('boundschange', function (event) {
+            if (event.get('newZoom') !== event.get('oldZoom')) {    // Ловим изменение "зума" карты
+                heatmap.options.set('radius', Math.pow(2,(event.get('newZoom')/1.5-3)));
+            }
+        });
     });
     ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
         var data = houses_data,
             heatmap = new Heatmap(data, {
-                /*
-                // Радиус влияния.
-                radius: 15,
-                // Нужно ли уменьшать пиксельный размер точек при уменьшении зума. False - не нужно.
-                dissipating: false,
-                // Прозрачность тепловой карты.
-                opacity: 0.8,
-                // Прозрачность у медианной по весу точки.
-                intensityOfMidpoint: 0.2,
-                // JSON описание градиента.
-                gradient: {
-                    0.1: 'rgba(128, 255, 0, 0.7)',
-                    0.2: 'rgba(255, 255, 0, 0.8)',
-                    0.7: 'rgba(234, 72, 58, 0.9)',
-                    1.0: 'rgba(162, 36, 25, 1)'
-                }
-                */
+                radius: 10,
             });
         document.getElementById("heat_map_houses").onchange = function () {
             if(document.getElementById("heat_map_houses").checked) {
@@ -102,19 +91,14 @@ ymaps.ready(['polylabel.create']).then(function () {
                 heatmap.destroy()
             }
         }
+        myMap.events.add('boundschange', function (event) {
+            if (event.get('newZoom') !== event.get('oldZoom')) {    // Ловим изменение "зума" карты
+                heatmap.options.set('radius', Math.pow(2.1,(event.get('newZoom')/1.7-3)));
+            }
+        });
     });
-
-
-
-
-    myMap.events.add('boundschange', function (event) {
-    if (event.get('newZoom') !== event.get('oldZoom')) {    // Ловим изменение "зума" карты
-        //alert('Уровень масштабирования изменился.');
-
-    }
     get_postamats_data(myMap);
-
-});})
+    })
 
 
 
