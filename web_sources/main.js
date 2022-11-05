@@ -20,7 +20,8 @@ ymaps.ready(['polylabel.create']).then(function () {
     });
     const objectManager = new ymaps.ObjectManager();
     let polylabel;
-    const polylabel_arr = get_polylabel_arr(); polylabel_arr.forEach(function (item, i, district_arr) { objectManager.add(item); })
+    const polylabel_arr = get_polylabel_arr();
+    polylabel_arr.forEach(function (item, i, district_arr) { objectManager.add(item); })
     const areas_arr = get_areas_arr();
     const postamats_data = get_postamats_data();
     const houses_data = get_houses_data();
@@ -68,6 +69,14 @@ ymaps.ready(['polylabel.create']).then(function () {
         }
         else {
             polylabel.destroy()
+        }
+    }
+    document.getElementById("poly").onchange = function () {
+        if(document.getElementById("poly").checked) {
+            objectManager.objects.options.set('fillColor', 'rgba(64,122,206,0.1)');
+            }
+        else {
+            objectManager.objects.options.set('fillColor', 'rgba(64,122,206,0.45)');
         }
     }
     document.getElementById("areas").onchange = function () {
