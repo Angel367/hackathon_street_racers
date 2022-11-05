@@ -3,6 +3,13 @@ import {get_polylabel_arr} from "./districts/get_polylabel_arr.js";
 import {get_areas_arr} from "./areas/get_areas_arr.js";
 import {get_postamats_data} from "./heatmaps/postamats/get_postamats_data.js";
 import {get_houses_data} from "./heatmaps/houses/get_houses_data.js";
+import {get_libraries_arr} from "./placemarks/libraries/get_libraries_arr.js";
+import {get_cultures_arr} from "./placemarks/cultures/get_cultures_arr.js";
+import {get_gosuslugies_arr} from "./placemarks/gosuslugies/get_gosuslugies_arr.js";
+import {get_prints_arr} from "./placemarks/prints/get_prints_arr.js";
+import {get_sports_arr} from "./placemarks/sports/get_sports_arr.js";
+import {get_shops_arr} from "./placemarks/shops/get_shops_arr.js";
+import {placemarks_handler} from "./placemarks/placemarks_handler.js";
 
 ymaps.ready(['polylabel.create']).then(function () {
     const myMap = new ymaps.Map("map", {
@@ -11,29 +18,39 @@ ymaps.ready(['polylabel.create']).then(function () {
     }, {
         searchControlProvider: 'yandex#search'
     });
-
     const objectManager = new ymaps.ObjectManager();
     let polylabel;
-    const polylabel_arr = get_polylabel_arr();
-    polylabel_arr.forEach(function (item, i, district_arr) {
-            objectManager.add(item);
-    })
+    const polylabel_arr = get_polylabel_arr(); polylabel_arr.forEach(function (item, i, district_arr) { objectManager.add(item); })
     const areas_arr = get_areas_arr();
-    const postamats_data = get_postamats_data()
-    const houses_data = get_houses_data()
+    const postamats_data = get_postamats_data();
+    const houses_data = get_houses_data();
 
-
-    function add_areas() {
-        areas_arr.forEach(function (item, i, district_arr) {
-        myMap.geoObjects.add(item);
+    let myCircle = new ymaps.Circle([
+        // Координаты центра круга.
+        [55.76, 37.60],
+        // Радиус круга в метрах.
+        -1
+    ], {
+        // Описываем свойства круга.
+        // Содержимое балуна.
+        //balloonContent: "Радиус круга - 10 км",
+        // Содержимое хинта.
+        //hintContent: "Подвинь меня"
+    }, {
+        // Задаем опции круга.
+        // Включаем возможность перетаскивания круга.
+        draggable: false,
+        // Цвет заливки.
+        // Последний байт (77) определяет прозрачность.
+        // Прозрачность заливки также можно задать используя опцию "fillOpacity".
+        fillColor: "#DB709377",
+        // Цвет обводки.
+        strokeColor: "#990066",
+        // Прозрачность обводки.
+        strokeOpacity: 0.8,
+        // Ширина обводки в пикселях.
+        strokeWidth: 5
     });
-    }
-
-    function remove_areas() {
-        areas_arr.forEach(function (item, i, district_arr) {
-        myMap.geoObjects.remove(item);
-    });
-    }
 
     document.getElementById("districts").onchange = function () {
         if(document.getElementById("districts").checked) {
@@ -55,12 +72,18 @@ ymaps.ready(['polylabel.create']).then(function () {
     }
     document.getElementById("areas").onchange = function () {
         if(document.getElementById("areas").checked) {
-            add_areas();
+            areas_arr.forEach(function (item, i, district_arr) {
+                myMap.geoObjects.add(item);
+            });
         }
         else {
-            remove_areas();
+            areas_arr.forEach(function (item, i, district_arr) {
+                myMap.geoObjects.remove(item);
+            });
         }
     }
+
+
     ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
         var data = postamats_data,
         heatmap = new Heatmap(data);
@@ -72,27 +95,16 @@ ymaps.ready(['polylabel.create']).then(function () {
                 heatmap.destroy()
             }
         }
+        myMap.events.add('boundschange', function (event) {
+            if (event.get('newZoom') !== event.get('oldZoom')) {    // Ловим изменение "зума" карты
+                heatmap.options.set('radius', Math.pow(2,(event.get('newZoom')/1.5-3)));
+            }
+        });
     });
     ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
         var data = houses_data,
             heatmap = new Heatmap(data, {
-                /*
-                // Радиус влияния.
-                radius: 15,
-                // Нужно ли уменьшать пиксельный размер точек при уменьшении зума. False - не нужно.
-                dissipating: false,
-                // Прозрачность тепловой карты.
-                opacity: 0.8,
-                // Прозрачность у медианной по весу точки.
-                intensityOfMidpoint: 0.2,
-                // JSON описание градиента.
-                gradient: {
-                    0.1: 'rgba(128, 255, 0, 0.7)',
-                    0.2: 'rgba(255, 255, 0, 0.8)',
-                    0.7: 'rgba(234, 72, 58, 0.9)',
-                    1.0: 'rgba(162, 36, 25, 1)'
-                }
-                */
+                radius: 10,
             });
         document.getElementById("heat_map_houses").onchange = function () {
             if(document.getElementById("heat_map_houses").checked) {
@@ -102,19 +114,39 @@ ymaps.ready(['polylabel.create']).then(function () {
                 heatmap.destroy()
             }
         }
+        myMap.events.add('boundschange', function (event) {
+            if (event.get('newZoom') !== event.get('oldZoom')) {    // Ловим изменение "зума" карты
+                heatmap.options.set('radius', Math.pow(2.1,(event.get('newZoom')/1.7-3)));
+            }
+        });
     });
 
-
-
-
-    myMap.events.add('boundschange', function (event) {
-    if (event.get('newZoom') !== event.get('oldZoom')) {    // Ловим изменение "зума" карты
-        //alert('Уровень масштабирования изменился.');
-
+    function reDrawCircle(event) {
+        if(myCircle.geometry.getRadius() === -1 && !event) return
+        myMap.geoObjects.add(myCircle);
+        if (event) {
+            myCircle.geometry.setCoordinates(event.get('coords'))
+        }
+        let newRadius = document.getElementById("radiusSlider").value
+        if (parseInt(newRadius) === 0) {
+            myMap.geoObjects.remove(myCircle);
+            return;
+        }
+        myCircle.geometry.setRadius(newRadius);
     }
-    get_postamats_data(myMap);
 
-});})
+    document.getElementById("radiusSlider").onchange = function () {
+        document.getElementById('rangeValue').innerHTML = this.value;
+        reDrawCircle()
+    }
+
+    myMap.events.add('click',
+        function (event) {
+            reDrawCircle(event)
+        }
+    );
+    placemarks_handler(myMap)
+})
 
 
 
