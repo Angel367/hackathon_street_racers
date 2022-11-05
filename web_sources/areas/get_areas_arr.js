@@ -18,9 +18,19 @@ import {getPolygon32} from "./polygons/polygon32.js"
 import {getPolygon33} from "./polygons/polygon33.js"
 import {getPolygon34} from "./polygons/polygon34.js"
 import {getPolygon21} from "./polygons/polygon21.js"
+import * as areas_json from './areas_arr.json' assert {type: 'json'};
+import * as libraries_json from "../placemarks/libraries/coord_biblioteki.json";
 //polygon1 все координаты ЗАО
 //polygon 11 ,12, 13,14,15,16 - это все части округа ЗАО
+
+
+
 export function get_areas_arr(){
+    for (var i = 0; i < libraries_json.default.length; i++) {
+        console.log(libraries_json.default[i])
+    }
+
+
     let areasArr = []
     areasArr.push(getPolygon16())
     areasArr.push(getPolygon15());
