@@ -17,6 +17,7 @@ import {getPolygon31} from "./polygons/polygon31.js"
 import {getPolygon32} from "./polygons/polygon32.js"
 import {getPolygon33} from "./polygons/polygon33.js"
 import {getPolygon34} from "./polygons/polygon34.js"
+import {getPolygon21} from "./polygons/polygon21.js"
 //polygon1 все координаты ЗАО
 //polygon 11 ,12, 13,14,15,16 - это все части округа ЗАО
 export function get_areas_arr(){
@@ -40,6 +41,7 @@ export function get_areas_arr(){
     areasArr.push(getPolygon6());
     areasArr.push(getPolygon7());
     areasArr.push(getPolygon8());
+    areasArr.push(getPolygon21());
 
     return areasArr;
 }
