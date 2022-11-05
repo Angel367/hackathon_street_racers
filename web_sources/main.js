@@ -3,6 +3,7 @@ import {get_polylabel_arr} from "./districts/get_polylabel_arr.js";
 import {get_areas_arr} from "./areas/get_areas_arr.js";
 import {get_postamats_data} from "./heatmaps/postamats/get_postamats_data.js";
 import {get_houses_data} from "./heatmaps/houses/get_houses_data.js";
+import {get_libraries_arr} from "./placemarks/libraries/get_libraries_arr.js";
 
 ymaps.ready(['polylabel.create']).then(function () {
     const myMap = new ymaps.Map("map", {
@@ -11,17 +12,15 @@ ymaps.ready(['polylabel.create']).then(function () {
     }, {
         searchControlProvider: 'yandex#search'
     });
-
     const objectManager = new ymaps.ObjectManager();
     let polylabel;
-    const polylabel_arr = get_polylabel_arr();
-    polylabel_arr.forEach(function (item, i, district_arr) {
-            objectManager.add(item);
-    })
+    const polylabel_arr = get_polylabel_arr(); polylabel_arr.forEach(function (item, i, district_arr) { objectManager.add(item); })
     const areas_arr = get_areas_arr();
-    const postamats_data = get_postamats_data()
-    const houses_data = get_houses_data()
-    var myCircle = new ymaps.Circle([
+    const postamats_data = get_postamats_data();
+    const houses_data = get_houses_data();
+    const libraries_arr = get_libraries_arr(myMap);
+
+    let myCircle = new ymaps.Circle([
         // Координаты центра круга.
         [55.76, 37.60],
         // Радиус круга в метрах.
@@ -51,14 +50,18 @@ ymaps.ready(['polylabel.create']).then(function () {
 
     function add_areas() {
         areas_arr.forEach(function (item, i, district_arr) {
-        myMap.geoObjects.add(item);
-    });
+            myMap.geoObjects.add(item);
+        });
     }
 
     function remove_areas() {
         areas_arr.forEach(function (item, i, district_arr) {
-        myMap.geoObjects.remove(item);
-    });
+            myMap.geoObjects.remove(item);
+        });
+    }
+
+    function remove_libraries() {
+
     }
 
     document.getElementById("districts").onchange = function () {
@@ -87,6 +90,20 @@ ymaps.ready(['polylabel.create']).then(function () {
             remove_areas();
         }
     }
+    document.getElementById("libraries_placemarks").onchange = function () {
+        if(document.getElementById("libraries_placemarks").checked) {
+            libraries_arr.forEach(function (item) {
+                myMap.geoObjects.add(item);
+            });
+        }
+        else {
+            libraries_arr.forEach(function (item) {
+                myMap.geoObjects.remove(item);
+            });
+        }
+    }
+
+
     ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
         var data = postamats_data,
         heatmap = new Heatmap(data);
@@ -143,12 +160,12 @@ ymaps.ready(['polylabel.create']).then(function () {
         reDrawCircle()
     }
 
-myMap.events.add('click', function (event) {
-    reDrawCircle(event)
-    });
-
-    get_postamats_data(myMap);
-    })
+    myMap.events.add('click',
+        function (event) {
+            reDrawCircle(event)
+        }
+    );
+})
 
 
 
