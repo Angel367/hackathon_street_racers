@@ -21,6 +21,32 @@ ymaps.ready(['polylabel.create']).then(function () {
     const areas_arr = get_areas_arr();
     const postamats_data = get_postamats_data()
     const houses_data = get_houses_data()
+    var myCircle = new ymaps.Circle([
+        // Координаты центра круга.
+        [55.76, 37.60],
+        // Радиус круга в метрах.
+        -1
+    ], {
+        // Описываем свойства круга.
+        // Содержимое балуна.
+        //balloonContent: "Радиус круга - 10 км",
+        // Содержимое хинта.
+        //hintContent: "Подвинь меня"
+    }, {
+        // Задаем опции круга.
+        // Включаем возможность перетаскивания круга.
+        draggable: false,
+        // Цвет заливки.
+        // Последний байт (77) определяет прозрачность.
+        // Прозрачность заливки также можно задать используя опцию "fillOpacity".
+        fillColor: "#DB709377",
+        // Цвет обводки.
+        strokeColor: "#990066",
+        // Прозрачность обводки.
+        strokeOpacity: 0.8,
+        // Ширина обводки в пикселях.
+        strokeWidth: 5
+    });
 
 
     function add_areas() {
@@ -97,6 +123,30 @@ ymaps.ready(['polylabel.create']).then(function () {
             }
         });
     });
+
+    function reDrawCircle(event) {
+        if(myCircle.geometry.getRadius() === -1 && !event) return
+        myMap.geoObjects.add(myCircle);
+        if (event) {
+            myCircle.geometry.setCoordinates(event.get('coords'))
+        }
+        let newRadius = document.getElementById("radiusSlider").value
+        if (parseInt(newRadius) === 0) {
+            myMap.geoObjects.remove(myCircle);
+            return;
+        }
+        myCircle.geometry.setRadius(newRadius);
+    }
+
+    document.getElementById("radiusSlider").onchange = function () {
+        document.getElementById('rangeValue').innerHTML = this.value;
+        reDrawCircle()
+    }
+
+myMap.events.add('click', function (event) {
+    reDrawCircle(event)
+    });
+
     get_postamats_data(myMap);
     })
 

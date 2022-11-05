@@ -38,6 +38,20 @@
         <input type="checkbox" id="heat_map_houses" name="heat_map_houses">
         <label for="heat_map_houses">Тепловая карта домов</label>
     </div>
+    <div>
+    <div>
+        <input type="checkbox" id="libraries_placemarks" name="libraries_placemarks">
+        <label for="libraries_placemarks">Библиотеки</label>
+    </div>
+    <p><input type="range" min="0" max="1000" id="radiusSlider" list="rangeList"> <span id="rangeValue">500</span></p>
+        <datalist id="rangeList">
+            <option value="0" label="0">
+            <option value="250" label="250">
+            <option value="500" label="500">
+            <option value="750" label="750">
+            <option value="1000" label="1000">
+        </datalist>
+    </div>
 <div id="map"></div>
 </body>
 </html>
