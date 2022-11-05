@@ -114,11 +114,18 @@ ymaps.ready(['polylabel.create']).then(function () {
     }
     get_postamats_data(myMap);
 
-        myMap.events.add('click', function (event) {
-            alert(event.get('coords'))
-        });
 
-});})
+});
+        myMap.onclick = function (event) {
+            if(event.target == ymaps.Polygon){
+            areas_arr.forEach(function (item, i, district_arr) {
+        heatmap.options.set('radius', Math.pow(2,(event.get('newZoom')/1.5-3)));
+    })
+
+            }
+        }
+
+})
 
 
 
