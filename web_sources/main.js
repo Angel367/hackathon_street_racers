@@ -4,6 +4,12 @@ import {get_areas_arr} from "./areas/get_areas_arr.js";
 import {get_postamats_data} from "./heatmaps/postamats/get_postamats_data.js";
 import {get_houses_data} from "./heatmaps/houses/get_houses_data.js";
 import {get_libraries_arr} from "./placemarks/libraries/get_libraries_arr.js";
+import {get_cultures_arr} from "./placemarks/cultures/get_cultures_arr.js";
+import {get_gosuslugies_arr} from "./placemarks/gosuslugies/get_gosuslugies_arr.js";
+import {get_prints_arr} from "./placemarks/prints/get_prints_arr.js";
+import {get_sports_arr} from "./placemarks/sports/get_sports_arr.js";
+import {get_shops_arr} from "./placemarks/shops/get_shops_arr.js";
+import {placemarks_handler} from "./placemarks/placemarks_handler.js";
 
 ymaps.ready(['polylabel.create']).then(function () {
     const myMap = new ymaps.Map("map", {
@@ -18,7 +24,6 @@ ymaps.ready(['polylabel.create']).then(function () {
     const areas_arr = get_areas_arr();
     const postamats_data = get_postamats_data();
     const houses_data = get_houses_data();
-    const libraries_arr = get_libraries_arr(myMap);
 
     let myCircle = new ymaps.Circle([
         // Координаты центра круга.
@@ -47,23 +52,6 @@ ymaps.ready(['polylabel.create']).then(function () {
         strokeWidth: 5
     });
 
-
-    function add_areas() {
-        areas_arr.forEach(function (item, i, district_arr) {
-            myMap.geoObjects.add(item);
-        });
-    }
-
-    function remove_areas() {
-        areas_arr.forEach(function (item, i, district_arr) {
-            myMap.geoObjects.remove(item);
-        });
-    }
-
-    function remove_libraries() {
-
-    }
-
     document.getElementById("districts").onchange = function () {
         if(document.getElementById("districts").checked) {
             myMap.geoObjects.add(objectManager);
@@ -84,20 +72,12 @@ ymaps.ready(['polylabel.create']).then(function () {
     }
     document.getElementById("areas").onchange = function () {
         if(document.getElementById("areas").checked) {
-            add_areas();
-        }
-        else {
-            remove_areas();
-        }
-    }
-    document.getElementById("libraries_placemarks").onchange = function () {
-        if(document.getElementById("libraries_placemarks").checked) {
-            libraries_arr.forEach(function (item) {
+            areas_arr.forEach(function (item, i, district_arr) {
                 myMap.geoObjects.add(item);
             });
         }
         else {
-            libraries_arr.forEach(function (item) {
+            areas_arr.forEach(function (item, i, district_arr) {
                 myMap.geoObjects.remove(item);
             });
         }
@@ -165,6 +145,7 @@ ymaps.ready(['polylabel.create']).then(function () {
             reDrawCircle(event)
         }
     );
+    placemarks_handler(myMap)
 })
 
 

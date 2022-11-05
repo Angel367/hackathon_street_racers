@@ -1,13 +1,13 @@
-import * as libraries_json from './coord_biblioteki.json' assert {type: 'json'};
+import * as shops_json from './coord_torg_objects.json' assert {type: 'json'};
 
-export function get_libraries_arr() {
-    let libraries = []
-    for (var i = 0; i < libraries_json.default.length; i++) {
+export function get_shops_arr() {
+    let shops = []
+    for (var i = 0; i < shops_json.default.length; i++) {
         let myGeoObject = new ymaps.GeoObject({
             // Описание геометрии.
             geometry: {
                 type: "Point",
-                coordinates: [libraries_json.default[i][1], libraries_json.default[i][0]]
+                coordinates: [shops_json.default[i][1], shops_json.default[i][0]]
             },
             // Свойства.
             properties: {
@@ -18,10 +18,9 @@ export function get_libraries_arr() {
         }, {
             // Опции.
             // Иконка метки будет растягиваться под размер ее содержимого.
-            preset: 'islands#brownBookIcon',
+            preset: 'islands#redShoppingIcon',
         })
-        libraries[i] = myGeoObject
+        shops[i] = myGeoObject
     }
-
-    return libraries
+    return shops
 }

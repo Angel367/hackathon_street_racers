@@ -39,19 +39,37 @@
         <label for="heat_map_houses">Тепловая карта домов</label>
     </div>
     <div>
+        <input type="checkbox" id="cultures_placemarks" name="cultures_placemarks">
+        <label for="cultures_placemarks">Дома культуры</label>
+    </div>
+    <div>
+        <input type="checkbox" id="gosuslugies_placemarks" name="gosuslugies_placemarks">
+        <label for="gosuslugies_placemarks">МФЦ</label>
+    </div>
     <div>
         <input type="checkbox" id="libraries_placemarks" name="libraries_placemarks">
         <label for="libraries_placemarks">Библиотеки</label>
     </div>
-    <p><input type="range" min="0" max="1000" id="radiusSlider" list="rangeList"> <span id="rangeValue">500</span></p>
-        <datalist id="rangeList">
-            <option value="0" label="0">
-            <option value="250" label="250">
-            <option value="500" label="500">
-            <option value="750" label="750">
-            <option value="1000" label="1000">
-        </datalist>
+    <div>
+        <input type="checkbox" id="prints_placemarks" name="prints_placemarks">
+        <label for="prints_placemarks">Печатные</label>
     </div>
+    <div>
+        <input type="checkbox" id="shops_placemarks" name="shops_placemarks">
+        <label for="shops_placemarks">Торговые объекты</label>
+    </div>
+    <div>
+        <input type="checkbox" id="sports_placemarks" name="sports_placemarks">
+        <label for="sports_placemarks">Спортивные комплексы</label>
+    </div>
+    <p><input type="range" min="0" max="1000" id="radiusSlider" list="rangeList"> <span id="rangeValue">500</span></p>
+    <datalist id="rangeList">
+        <option value="0" label="0">
+        <option value="250" label="250">
+        <option value="500" label="500">
+        <option value="750" label="750">
+        <option value="1000" label="1000">
+    </datalist>
 <div id="map"></div>
 </body>
 </html>

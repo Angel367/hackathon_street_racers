@@ -1,13 +1,13 @@
-import * as libraries_json from './coord_biblioteki.json' assert {type: 'json'};
+import * as sports_json from './coord_sport_objects.json' assert {type: 'json'};
 
-export function get_libraries_arr() {
-    let libraries = []
-    for (var i = 0; i < libraries_json.default.length; i++) {
+export function get_sports_arr() {
+    let sports = []
+    for (var i = 0; i < sports_json.default.length; i++) {
         let myGeoObject = new ymaps.GeoObject({
             // Описание геометрии.
             geometry: {
                 type: "Point",
-                coordinates: [libraries_json.default[i][1], libraries_json.default[i][0]]
+                coordinates: [sports_json.default[i][1], sports_json.default[i][0]]
             },
             // Свойства.
             properties: {
@@ -18,10 +18,9 @@ export function get_libraries_arr() {
         }, {
             // Опции.
             // Иконка метки будет растягиваться под размер ее содержимого.
-            preset: 'islands#brownBookIcon',
+            preset: 'islands#orangeSportIcon',
         })
-        libraries[i] = myGeoObject
+        sports[i] = myGeoObject
     }
-
-    return libraries
+    return sports
 }
