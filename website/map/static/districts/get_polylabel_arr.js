@@ -2,17 +2,9 @@ import {get_polylabel0} from "./polylabels/polylabel0.js"
 import {get_polylabel1} from "./polylabels/polylabel1.js"
 import {get_polylabel2} from "./polylabels/polylabel2.js"
 import {get_polylabel3} from "./polylabels/polylabel3.js"
-import {get_polylabel4} from "./polylabels/polylabel4.js"
 import {get_polylabel5} from "./polylabels/polylabel5.js"
 import {get_polylabel6} from "./polylabels/polylabel6.js"
 import {get_polylabel7} from "./polylabels/polylabel7.js"
-import {get_polylabel8} from "./polylabels/polylabel8.js"
-import {get_polylabel9} from "./polylabels/polylabel9.js"
-import {get_polylabel10} from "./polylabels/polylabel10.js"
-import {get_polylabel11} from "./polylabels/polylabel11.js"
-import {get_polylabel12} from "./polylabels/polylabel12.js"
-import {get_polylabel13} from "./polylabels/polylabel13.js"
-import {get_polylabel14} from "./polylabels/polylabel14.js"
 import {get_polylabel15} from "./polylabels/polylabel15.js"
 import {get_polylabel16} from "./polylabels/polylabel16.js"
 import {get_polylabel17} from "./polylabels/polylabel17.js"
@@ -125,24 +117,6 @@ import {get_polylabel123} from "./polylabels/polylabel123.js"
 import {get_polylabel124} from "./polylabels/polylabel124.js"
 import {get_polylabel125} from "./polylabels/polylabel125.js"
 import {get_polylabel126} from "./polylabels/polylabel126.js"
-import {get_polylabel127} from "./polylabels/polylabel127.js"
-import {get_polylabel128} from "./polylabels/polylabel128.js"
-import {get_polylabel129} from "./polylabels/polylabel129.js"
-import {get_polylabel130} from "./polylabels/polylabel130.js"
-import {get_polylabel131} from "./polylabels/polylabel131.js"
-import {get_polylabel132} from "./polylabels/polylabel132.js"
-import {get_polylabel133} from "./polylabels/polylabel133.js"
-import {get_polylabel134} from "./polylabels/polylabel134.js"
-import {get_polylabel135} from "./polylabels/polylabel135.js"
-import {get_polylabel136} from "./polylabels/polylabel136.js"
-import {get_polylabel137} from "./polylabels/polylabel137.js"
-import {get_polylabel138} from "./polylabels/polylabel138.js"
-import {get_polylabel139} from "./polylabels/polylabel139.js"
-import {get_polylabel140} from "./polylabels/polylabel140.js"
-import {get_polylabel141} from "./polylabels/polylabel141.js"
-import {get_polylabel142} from "./polylabels/polylabel142.js"
-import {get_polylabel143} from "./polylabels/polylabel143.js"
-import {get_polylabel144} from "./polylabels/polylabel144.js"
 import {get_polylabel145} from "./polylabels/polylabel145.js"
 
 export function get_polylabel_arr(){
@@ -151,17 +125,9 @@ export function get_polylabel_arr(){
     polylabel_arr.push(get_polylabel1());
     polylabel_arr.push(get_polylabel2());
     polylabel_arr.push(get_polylabel3());
-    polylabel_arr.push(get_polylabel4());
     polylabel_arr.push(get_polylabel5());
     polylabel_arr.push(get_polylabel6());
     polylabel_arr.push(get_polylabel7());
-    polylabel_arr.push(get_polylabel8());
-    polylabel_arr.push(get_polylabel9());
-    polylabel_arr.push(get_polylabel10());
-    polylabel_arr.push(get_polylabel11());
-    polylabel_arr.push(get_polylabel12());
-    polylabel_arr.push(get_polylabel13());
-    polylabel_arr.push(get_polylabel14());
     polylabel_arr.push(get_polylabel15());
     polylabel_arr.push(get_polylabel16());
     polylabel_arr.push(get_polylabel17());
@@ -274,25 +240,6 @@ export function get_polylabel_arr(){
     polylabel_arr.push(get_polylabel124());
     polylabel_arr.push(get_polylabel125());
     polylabel_arr.push(get_polylabel126());
-    polylabel_arr.push(get_polylabel127());
-    polylabel_arr.push(get_polylabel128());
-    polylabel_arr.push(get_polylabel129());
-    polylabel_arr.push(get_polylabel130());
-    polylabel_arr.push(get_polylabel131());
-    polylabel_arr.push(get_polylabel132());
-    polylabel_arr.push(get_polylabel133());
-    polylabel_arr.push(get_polylabel134());
-    polylabel_arr.push(get_polylabel135());
-    polylabel_arr.push(get_polylabel136());
-    polylabel_arr.push(get_polylabel137());
-    polylabel_arr.push(get_polylabel138());
-    polylabel_arr.push(get_polylabel139());
-    polylabel_arr.push(get_polylabel140());
-    polylabel_arr.push(get_polylabel141());
-    polylabel_arr.push(get_polylabel142());
-    polylabel_arr.push(get_polylabel143());
-    polylabel_arr.push(get_polylabel144());
     polylabel_arr.push(get_polylabel145());
-
     return polylabel_arr;
 }

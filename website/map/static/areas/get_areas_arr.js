@@ -1,27 +1,23 @@
-import {getPolygon0} from "./polygons/polygon0.js"
-import {getPolygon1} from "./polygons/polygon1.js"
-import {getPolygon2} from "./polygons/polygon2.js"
-import {getPolygon3} from "./polygons/polygon3.js"
-import {getPolygon4} from "./polygons/polygon4.js"
-import {getPolygon5} from "./polygons/polygon5.js"
-import {getPolygon6} from "./polygons/polygon6.js"
-import {getPolygon7} from "./polygons/polygon7.js"
-import {getPolygon8} from "./polygons/polygon8.js"
-import {getPolygon9} from "./polygons/polygon9.js"
-
+import * as areas_json from './areas_arr.json' assert {type: 'json'};
 
 export function get_areas_arr(){
     let areasArr = []
-    areasArr.push(getPolygon0());
-    areasArr.push(getPolygon1());
-    areasArr.push(getPolygon2());
-    areasArr.push(getPolygon3());
-    areasArr.push(getPolygon4());
-    areasArr.push(getPolygon5());
-    areasArr.push(getPolygon6());
-    areasArr.push(getPolygon7());
-    areasArr.push(getPolygon8());
-    areasArr.push(getPolygon9());
+    for (var i = 0; i < areas_json.default.length; i++) {
+        var myPolygon = new ymaps.Polygon(
+            [
+                areas_json.default[i].coord,],
+            {
+                hintContent: areas_json.default[i].name,
+            }, {
+                // Задаем опции геообъекта.
+                // Цвет заливки.
+                fillColor: '#905A7140',
 
+                // Ширина обводки.
+                strokeColor: '#AA000050',
+                strokeWidth: 1.5
+            });
+        areasArr[i] = myPolygon
+    }
     return areasArr;
 }
