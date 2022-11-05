@@ -117,7 +117,6 @@ import {get_polylabel123} from "./polylabels/polylabel123.js"
 import {get_polylabel124} from "./polylabels/polylabel124.js"
 import {get_polylabel125} from "./polylabels/polylabel125.js"
 import {get_polylabel126} from "./polylabels/polylabel126.js"
-import {get_polylabel136} from "./polylabels/polylabel136.js"
 import {get_polylabel145} from "./polylabels/polylabel145.js"
 
 export function get_polylabel_arr(){
@@ -241,7 +240,6 @@ export function get_polylabel_arr(){
     polylabel_arr.push(get_polylabel124());
     polylabel_arr.push(get_polylabel125());
     polylabel_arr.push(get_polylabel126());
-    polylabel_arr.push(get_polylabel136());
     polylabel_arr.push(get_polylabel145());
     return polylabel_arr;
 }
