@@ -114,6 +114,10 @@ ymaps.ready(['polylabel.create']).then(function () {
     }
     get_postamats_data(myMap);
 
+        myMap.events.add('click', function (event) {
+            alert(event.get('coords'))
+        });
+
 });})
 
 
