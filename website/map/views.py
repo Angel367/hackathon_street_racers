@@ -19,4 +19,9 @@ def contacts_view(request):
     # template = loader.get_template('')
     return render(request, 'map/contacts.html')
 
+
+def docs_view(request):
+    # template = loader.get_template('')
+    return render(request, 'map/docs.html')
+
     # return HttpResponse("Hello, world. You're at the polls index.")

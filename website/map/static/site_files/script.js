@@ -55,7 +55,7 @@ function handler(event) {
 
 let btn_line_2 = document.querySelector('.container-with-hr-2');
 
-btn_line_2.onmouseover = btn_line_2.onmouseout = handler2;
+//btn_line_2.onmouseover = btn_line_2.onmouseout = handler2;
 
 function handler2(event) {
     if (event.type === 'mouseover') {

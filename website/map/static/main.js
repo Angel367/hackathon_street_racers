@@ -376,7 +376,7 @@ ymaps.ready(['polylabel.create']).then(function () {
         });
     }
     document.getElementById("reset").onclick = function () {
-        //heatmap.destroy();
+        alert("W")
         reset_checkboxes()
         myMap.geoObjects.removeAll()
                 var button = document.getElementById('reset');
