@@ -409,7 +409,7 @@ ymaps.ready(['polylabel.create']).then(function () {
 
 
 
-    myMap.events.add('click',
+    myMap.events.add('dblclick',
         function (event) {
             reDrawCircle(event)
         }

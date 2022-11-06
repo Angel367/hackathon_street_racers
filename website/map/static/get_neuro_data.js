@@ -26,7 +26,7 @@ export async function get_neuro_data(selected_districts) {
             params.push('tc');
         }
         if (document.getElementById("sports_placemarks").checked) {
-            params.push('sport');   
+            params.push('sport');
         }
 
         request_url = request_url.replaceAll("REPLACE_TO_RADIUS", temp_radius.toString())
