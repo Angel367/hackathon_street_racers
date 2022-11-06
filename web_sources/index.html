@@ -64,10 +64,10 @@
     </div>
     <div>
         <input type="checkbox" id="disselect" name="disselect">
-        <label for="disselect">Полигон</label>
+        <label for="disselect">Выбрать район</label>
     </div>
     <div>
-        <select id="selectiondistricts">
+        <select id="selectiondistricts" multiple>
 <option value="0">район Внуково</option>
 <option value="1">район Кунцево</option>
 <option value="2">район Восточный</option>
@@ -192,20 +192,23 @@
     </div>
     <div>
         <input type="checkbox" id="areaselect" name="disselect">
-        <label for="areaselect">Полигон</label>
+        <label for="areaselect">Выбрать округ</label>
     </div>
     <div>
         <select id="selectionarea">
-<option value="0">район Внуково</option>
-<option value="1">район Кунцево</option>
-<option value="2">район Восточный</option>
-<option value="3">район Метрогородок</option>
-<option value="4">район Крылатское</option>
-<option value="5">Мещанский район</option>
-<option value="6">район Сокольники</option>
-<option value="7">район Хорошёво-Мнёвники</option>
-<option value="8">район Щукино</option>
-<option value="9">район Строгино</option>
+<option value="0">Северный административный округ</option>
+<option value="1">Юго-Восточный административный округ</option>
+<option value="2">Северо-Западный административный округ</option>
+<option value="3">Северо-Восточный административный округ</option>
+<option value="4">Южный административный округ</option>
+<option value="5">Юго-Западный административный округ</option>
+<option value="6">Центральный административный округ</option>
+<option value="7">Западный административный округ</option>
+<option value="8">Восточный административный округ</option>
+            </select>
+    </div>
+    <div>
+        <button id="button-reset" name="reset">Сбросить выбор</button>
     </div>
     <p><input type="range" min="0" max="1000" id="radiusSlider" list="rangeList"> <span id="rangeValue">500</span></p>
     <datalist id="rangeList">
