@@ -468,7 +468,7 @@ export function get_polylabel6(){
         'text-align: center;'+
         'text-shadow: 0 0 5px rgba(42,58,89,0.5);"'+
         ' <p>'+'Мещанский район</p></div>',
-                                    fillColor: 'rgba(64,122,206,0.45)',
+                fillColor: 'rgba(64,122,206,0.45)',
                 // Цвет обводки.
                 strokeColor: 'rgb(160,233,255)',
                 strokeWidth: '2',
