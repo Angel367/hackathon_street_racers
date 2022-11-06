@@ -63,11 +63,11 @@
         <label for="sports_placemarks">Спортивные комплексы</label>
     </div>
     <div>
-        <input type="checkbox" id="poly" name="poly">
-        <label for="poly">Полигон</label>
+        <input type="checkbox" id="disselect" name="disselect">
+        <label for="disselect">Полигон</label>
     </div>
     <div>
-        <select id="selection">
+        <select id="selectiondistricts">
 <option value="0">район Внуково</option>
 <option value="1">район Кунцево</option>
 <option value="2">район Восточный</option>
@@ -188,11 +188,24 @@
 <option value="117">район Измайлово</option>
 <option value="118">район Ивановское</option>
 <option value="119">Басманный район</option>
-
-
-
-
 </select>
+    </div>
+    <div>
+        <input type="checkbox" id="areaselect" name="disselect">
+        <label for="areaselect">Полигон</label>
+    </div>
+    <div>
+        <select id="selectionarea">
+<option value="0">район Внуково</option>
+<option value="1">район Кунцево</option>
+<option value="2">район Восточный</option>
+<option value="3">район Метрогородок</option>
+<option value="4">район Крылатское</option>
+<option value="5">Мещанский район</option>
+<option value="6">район Сокольники</option>
+<option value="7">район Хорошёво-Мнёвники</option>
+<option value="8">район Щукино</option>
+<option value="9">район Строгино</option>
     </div>
     <p><input type="range" min="0" max="1000" id="radiusSlider" list="rangeList"> <span id="rangeValue">500</span></p>
     <datalist id="rangeList">

@@ -91,10 +91,10 @@ ymaps.ready(['polylabel.create']).then(function () {
             });
         }
     }
-    document.getElementById("selection").onchange = function () {
-    var e = document.getElementById("selection");
+    document.getElementById("selectiondistricts").onchange = function () {
+    var e = document.getElementById("selectiondistricts");
     var value = e.options[e.selectedIndex].value;
-    if(document.getElementById("poly").checked) {
+    if(document.getElementById("disselect").checked) {
         myMap.geoObjects.remove(objectManager)
             for(var i = 0; i < objectManager.objects.getAll().length; i++){
                 console.log(objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.45)')
@@ -119,13 +119,13 @@ ymaps.ready(['polylabel.create']).then(function () {
 
         }
     }
-    document.getElementById("poly").onchange = function () {
+    document.getElementById("disselect").onchange = function () {
     myMap.geoObjects.remove(objectManager)
             for(var i = 0; i < objectManager.objects.getAll().length; i++){
                 console.log(objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.45)')
             }
         myMap.geoObjects.add(objectManager)
-    if(!document.getElementById("poly").checked && document.getElementById("districts").checked) {
+    if(!document.getElementById("disselect").checked && document.getElementById("districts").checked) {
     myMap.geoObjects.remove(objectManager)
              for(var i = 0; i < objectManager.objects.getAll().length; i++){
 
@@ -134,7 +134,51 @@ ymaps.ready(['polylabel.create']).then(function () {
             }
             myMap.geoObjects.add(objectManager)
         }
-        else if (!document.getElementById("poly").checked){
+        else if (!document.getElementById("disselect").checked){
+        myMap.geoObjects.remove(objectManager);
+        }
+        }
+
+
+
+        document.getElementById("selectionarea").onchange = function () {
+    var e = document.getElementById("selectionarea");
+    var value = e.options[e.selectedIndex].value;
+    if(document.getElementById("areaselect").checked) {
+        areas_arr.forEach(function (item, i, district_arr) {
+                item.options.fillColor = ''
+            });
+        myMap.geoObjects.remove(objectManager)
+        for(var i = 0; i < objectManager.objects.getAll().length; i++){
+        if(i!=value){
+        console.log(objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.1)')
+        }
+        }
+        myMap.geoObjects.add(objectManager)
+        }
+    else {
+            myMap.geoObjects.remove(objectManager)
+             for(var i = 0; i < objectManager.objects.getAll().length; i++){
+
+            console.log(objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.45)')
+
+            }
+            myMap.geoObjects.add(objectManager)
+
+        }
+    }
+    document.getElementById("areaselect").onchange = function () {
+    areas_arr.forEach(function(item, i, district_arr))
+    if(!document.getElementById("areaselect").checked && document.getElementById("areas").checked) {
+    myMap.geoObjects.remove(objectManager)
+             for(var i = 0; i < objectManager.objects.getAll().length; i++){
+
+            console.log(objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.45)')
+
+            }
+            myMap.geoObjects.add(objectManager)
+        }
+        else if (!document.getElementById("disselect").checked){
         myMap.geoObjects.remove(objectManager);
         }
         }
