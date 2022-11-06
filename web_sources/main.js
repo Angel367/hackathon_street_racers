@@ -91,10 +91,10 @@ ymaps.ready(['polylabel.create']).then(function () {
             });
         }
     }
-    document.getElementById("poly").onchange = function () {
+    document.getElementById("selection").onchange = function () {
+    if(document.getElementById("poly").checked) {
     var e = document.getElementById("selection");
     var value = e.options[e.selectedIndex].value;
-    if(document.getElementById("poly").checked) {
         myMap.geoObjects.remove(objectManager)
         for(var i = 0; i < objectManager.objects.getAll().length; i++){
         if(i!=value){
@@ -106,14 +106,25 @@ ymaps.ready(['polylabel.create']).then(function () {
     else {
             myMap.geoObjects.remove(objectManager)
              for(var i = 0; i < objectManager.objects.getAll().length; i++){
-             if(i!=value){
+
             console.log(objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.45)')
-            }
+
             }
             myMap.geoObjects.add(objectManager)
 
         }
     }
+    document.getElementById("poly").onchange = function () {
+    if(!document.getElementById("poly").checked && document.getElementById("districts").checked) {
+    myMap.geoObjects.remove(objectManager)
+             for(var i = 0; i < objectManager.objects.getAll().length; i++){
+
+            console.log(objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.45)')
+
+            }
+            myMap.geoObjects.add(objectManager)
+        }
+        }
 
     ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
         var data = postamats_data,
