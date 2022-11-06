@@ -9,8 +9,14 @@ def index_view(request):
 
     # return HttpResponse("Hello, world. You're at the polls index.")
 
+
 def map_view(request):
     # template = loader.get_template('')
-    return render(request, 'map/index.html')
+    return render(request, 'map/map.html')
+
+
+def contacts_view(request):
+    # template = loader.get_template('')
+    return render(request, 'map/contacts.html')
 
     # return HttpResponse("Hello, world. You're at the polls index.")

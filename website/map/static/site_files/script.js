@@ -42,7 +42,7 @@ let timer = setInterval(function () {
 
 let btn_line = document.querySelector('.button-for-js-1');
 
-btn_line.onmouseover = btn_line.onmouseout = handler;
+//btn_line.onmouseover = btn_line.onmouseout = handler;
 
 function handler(event) {
     if (event.type === 'mouseover') {

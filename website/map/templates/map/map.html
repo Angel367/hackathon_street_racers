@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'site_files/style.css' %}">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<84ed901f-a57b-4c02-a213-6bcf3f08a149>" type="text/javascript"></script>
+    <script src="https://yastatic.net/s3/mapsapi-jslibs/heatmap/0.0.1/heatmap.min.js" type="text/javascript"></script>
+    <script src="https://yastatic.net/s3/mapsapi-jslibs/area/0.0.1/util.calculateArea.min.js" type="text/javascript"></script>
+    <script src="https://yastatic.net/s3/mapsapi-jslibs/polylabeler/1.0.1/polylabel.min.js" type="text/javascript"></script>
+    <script src="{% static 'main.js' %}" type="module"></script>
     <title>Document</title>
 </head>
 <body>
@@ -14,7 +19,7 @@
             <div class="container">
                 <div class="header__body">
                     <a href="index.html" class="header__logo">
-                        <img src="{% static 'site_files/logo/e68a892af68f0d0f.png' %}l" alt="Moscow Postomat">
+                        <img src="{% static 'site_files/logo/e68a892af68f0d0f.png' %}" alt="Moscow Postomat">
                     </a>
                     <div class="header__burger">
                             <span></span>
@@ -22,19 +27,19 @@
                     <nav class="header__menu">
                             <ul class="header__list">
                                 <li>
-                                    <a href="index.html" class="header__link"><div style="min-height: 100%; display: flex; align-items: center; justify-content: center;"><p>Главная</p></div></a>
+                                    <a href="/" class="header__link"><div style="min-height: 100%; display: flex; align-items: center; justify-content: center;"><p>Главная</p></div></a>
                                 </li>
                                 <li>
-                                <a href="map.html" class="header__link"><div style="min-height: 100%; display: flex; align-items: center; justify-content: center;"><p>Карта</p></div></a>
+                                <a href="/map/" class="header__link"><div style="min-height: 100%; display: flex; align-items: center; justify-content: center;"><p>Карта</p></div></a>
                                 </li>
                                 <li>
-                                <a href="games.html" class="header__link"><div style="min-height: 100%; display: flex; align-items: center; justify-content: center;"><p>Контакты</p></div></a>
+                                <a href="/contacts/" class="header__link"><div style="min-height: 100%; display: flex; align-items: center; justify-content: center;"><p>Контакты</p></div></a>
                                 </li>
                                 <li>
-                                    <a href="social.html" class="header__link"><img src="logo\google-docs.png" alt="Docs"></a>
+                                    <a href="social.html" class="header__link"><img src="{% static '/site_files/logo/google-docs.png' %}" alt="Docs"></a>
                                 </li>
                                 <li>
-                                    <a href="about_us.html" class="header__link"><img src="logo\headset.png" alt="Contanct"></a>
+                                    <a href="about_us.html" class="header__link"><img src="{% static '/site_files/logo/headset.png' %}" alt="Contanct"></a>
                                 </li>
                             </ul>
                     </nav>
@@ -304,13 +309,16 @@
             <!-- PASTE MAP HERE!! -->
             <!-- PASTE MAP HERE!! -->
             <!-- PASTE MAP HERE!! -->
+            <div class="container__content-column" style="height: 2000px;">
+            <div id="map" style="width: 100%; height: 100%;"></div>
+            </div>
 
 
             <div class="content__hr-top-2" style="margin-top: 0px; margin-left: 0px; background-color: #E3051D;height: 8px; width: 100%;"></div>
             <div class="container__content-row">
                 <div class="container__content-column" style="margin: 10px;">
                     <div class="btn-container" style="--btn-bg: green;">
-                        <button style="background-color: #290C12;">
+                        <button id = "execute" style="background-color: #290C12;">
                             <span class="text" style="font-family: Avante;">Расчёт</span>
                             <div class="icon-container">
                                 <div class="icon icon--left">
@@ -474,5 +482,6 @@
         if (window.jQuery) alert("jQuery подключен");
         else alert("jQuery не подключен");
     </script>-->
+
 </body>
 </html>

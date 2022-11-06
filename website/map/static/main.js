@@ -97,6 +97,7 @@ ymaps.ready(['polylabel.create']).then(function () {
         }
     }
     document.getElementById("selectiondistricts").onchange = function () {
+        alert("W")
     let selected = [];
     for (var option of document.getElementById('selectiondistricts').options)
     {
