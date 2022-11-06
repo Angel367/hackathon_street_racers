@@ -26,6 +26,7 @@ ymaps.ready(['polylabel.create']).then(function () {
     const areas_arr = get_areas_arr();
     const postamats_data = get_postamats_data();
     const houses_data = get_houses_data();
+    let selected_districts = [];
 
     let myCircle = new ymaps.Circle([
         // Координаты центра круга.
@@ -96,7 +97,7 @@ ymaps.ready(['polylabel.create']).then(function () {
         }
     }
     document.getElementById("selectiondistricts").onchange = function () {
-    var selected = [];
+    let selected = [];
     for (var option of document.getElementById('selectiondistricts').options)
     {
         if (option.selected) {
@@ -105,9 +106,10 @@ ymaps.ready(['polylabel.create']).then(function () {
     }
     if(document.getElementById("disselect").checked && !document.getElementById("areaselect").checked && selected.length > 0) {
         myMap.geoObjects.remove(objectManager)
+        selected_districts = []
 
         for(var i = 0; i < objectManager.objects.getAll().length; i++){
-            console.log(objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.45)')
+            objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.45)'
         }
         for ( var i = 0; i < objectManager.objects.getAll().length; i++ )
         {
@@ -120,7 +122,10 @@ ymaps.ready(['polylabel.create']).then(function () {
             }
             }
             if(flag){
-            console.log(objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.1)')
+                objectManager.objects.getAll()[i].options.fillColor = 'rgba(64,122,206,0.1)'
+            }
+            else {
+                selected_districts.push(objectManager.objects.getAll()[i])
             }
         }
         if(selected.length>0){
@@ -235,7 +240,7 @@ ymaps.ready(['polylabel.create']).then(function () {
         }
         }
 
-    document.getElementById('button-reset').onclick = function () {
+    function reset_checkboxes () {
     myMap.geoObjects.removeAll();
     if (document.getElementById("districts").checked) {
             document.getElementById("districts").checked = false;
@@ -299,13 +304,7 @@ ymaps.ready(['polylabel.create']).then(function () {
                 heatmap.destroy()
             }
         }
-        var button = document.getElementById('button-reset');
-        button.addEventListener("click", function(event){
-        heatmap.destroy();
-            if (document.getElementById("heat_map_postamats").checked) {
-            document.getElementById("heat_map_postamats").checked = false;
-            }
-        });
+
         myMap.events.add('boundschange', function (event) {
             if (event.get('newZoom') !== event.get('oldZoom')) {    // Ловим изменение "зума" карты
                 heatmap.options.set('radius', Math.pow(2,(event.get('newZoom')/1.5-3)));
@@ -329,7 +328,7 @@ ymaps.ready(['polylabel.create']).then(function () {
                 heatmap.destroy()
             }
         }
-           var button = document.getElementById('button-reset');
+           var button = document.getElementById('reset');
            button.addEventListener("click", function(event){
         heatmap.destroy();
             if (document.getElementById("heat_map_houses").checked) {
@@ -344,17 +343,17 @@ ymaps.ready(['polylabel.create']).then(function () {
         });
     });
     document.getElementById("execute").onclick = async function () {
-        let neuro_data = await get_neuro_data()
+        let neuro_data = await get_neuro_data(selected_districts)
         ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
             var data = neuro_data[0],
                 heatmap = new Heatmap(data, {
                     radius: 10,
                 })
             heatmap.setMap(myMap);
-            document.getElementById("reset").onclick = function () {
-                heatmap.destroy();
-                myMap.geoObjects.removeAll()
-            }
+            var button = document.getElementById('reset');
+           button.addEventListener("click", function(event){
+        heatmap.destroy();
+           })
         })
         neuro_data[1].forEach(function (item) {
             myMap.geoObjects.add(item);
@@ -375,6 +374,19 @@ ymaps.ready(['polylabel.create']).then(function () {
             myMap.geoObjects.add(item);
         });
     }
+    document.getElementById("reset").onclick = function () {
+        //heatmap.destroy();
+        reset_checkboxes()
+        myMap.geoObjects.removeAll()
+                var button = document.getElementById('reset');
+                button.addEventListener("click", function(event){
+
+                    //heatmap.destroy();
+                    if (document.getElementById("heat_map_postamats").checked) {
+                        document.getElementById("heat_map_postamats").checked = false;
+                    }
+                });
+            }
 
     function reDrawCircle(event) {
         if(myCircle.geometry.getRadius() === -1 && !event) return
