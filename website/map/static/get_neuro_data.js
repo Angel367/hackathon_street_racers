@@ -1,32 +1,41 @@
 
-export async function get_neuro_data() {
+
+export async function get_neuro_data(selected_districts) {
         let request_url = 'http://87.242.92.163:5000/api?radius=REPLACE_TO_RADIUS&object_types=REPLACE_TO_OBJECTS&regions=REPLACE_TO_DISTRICTS'
         let temp_radius = 1000;
         let temp_district_value = "район+Ясенево"
-        let temp_objects = []
+        let params = []
+        //console.log(selected_districts)
+        let district_names_right_format = get_district_names(selected_districts)
+        console.log(district_names_right_format)
+
 
         if(document.getElementById("cultures_placemarks").checked) {
-            temp_objects.push('dk');
+            params.push('dk');
         }
         if (document.getElementById("gosuslugies_placemarks").checked) {
-            temp_objects.push('mfc');
+            params.push('mfc');
         }
         if (document.getElementById("libraries_placemarks").checked)  {
-            temp_objects.push('library');
+            params.push('library');
         }
         if (document.getElementById("prints_placemarks").checked) {
-            temp_objects.push('kiosk');
+            params.push('kiosk');
         }
         if (document.getElementById("shops_placemarks").checked) {
-            temp_objects.push('tc');
+            params.push('tc');
         }
         if (document.getElementById("sports_placemarks").checked) {
-            temp_objects.push('sport');
+            params.push('sport');   
         }
 
         request_url = request_url.replaceAll("REPLACE_TO_RADIUS", temp_radius.toString())
-        request_url = request_url.replaceAll("REPLACE_TO_DISTRICTS", temp_district_value)
-        request_url = request_url.replaceAll("REPLACE_TO_OBJECTS", temp_objects+"")
+        //request_url = request_url.replaceAll("REPLACE_TO_DISTRICTS", temp_district_value)
+        request_url = request_url.replaceAll("REPLACE_TO_OBJECTS", params+"")
+        request_url = request_url.replaceAll("REPLACE_TO_DISTRICTS", district_names_right_format+"")
+        request_url = request_url.replaceAll(" ", "+")
+
+
 
     let result = []
     let neuro_data = await fetch(request_url)
@@ -46,7 +55,6 @@ export async function get_neuro_data() {
     let count = 0
     for (var key in neuro_data) {
         for (var i = 0; i < neuro_data[key].length; i++) {
-            //console.log(data[key][i][2])     // Каждая координата
             heat_map_data.features[count] = {
                 id: 'id'+i.toString(),
                 type: 'Feature',
@@ -154,4 +162,12 @@ export async function get_neuro_data() {
     result[5] = shops_arr
     result[6] = sports_arr
     return result
+}
+function get_district_names(selected_districts) {
+    let names = []
+    for (let i = 0; i < selected_districts.length; i++) {
+        names.push(selected_districts[i].properties.name);
+        names[i] = names[i].replaceAll(" ", "+")
+    }
+    return names
 }
