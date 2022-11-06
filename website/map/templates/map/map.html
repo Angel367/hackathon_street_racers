@@ -1,0 +1,478 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'site_files/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="header__body">
+                    <a href="index.html" class="header__logo">
+                        <img src="{% static 'site_files/logo/e68a892af68f0d0f.png' %}l" alt="Moscow Postomat">
+                    </a>
+                    <div class="header__burger">
+                            <span></span>
+                    </div>
+                    <nav class="header__menu">
+                            <ul class="header__list">
+                                <li>
+                                    <a href="index.html" class="header__link"><div style="min-height: 100%; display: flex; align-items: center; justify-content: center;"><p>Главная</p></div></a>
+                                </li>
+                                <li>
+                                <a href="map.html" class="header__link"><div style="min-height: 100%; display: flex; align-items: center; justify-content: center;"><p>Карта</p></div></a>
+                                </li>
+                                <li>
+                                <a href="games.html" class="header__link"><div style="min-height: 100%; display: flex; align-items: center; justify-content: center;"><p>Контакты</p></div></a>
+                                </li>
+                                <li>
+                                    <a href="social.html" class="header__link"><img src="logo\google-docs.png" alt="Docs"></a>
+                                </li>
+                                <li>
+                                    <a href="about_us.html" class="header__link"><img src="logo\headset.png" alt="Contanct"></a>
+                                </li>
+                            </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="container__content-column" id="content-map">
+            <div class="content__h1" style="margin-top: 30px;">
+                <h1 style="color: black;">Lorem ipsum dolar</h1>
+            </div>
+            <div class="content__hr-top-2" style="margin-top: 10px; height: 8px;"></div>
+
+            <div class="content__hr-top-2" style="margin-top: 50px; margin-left: 0px; background-color: #66ffff;height: 8px; width: 100%;"></div>
+            <div class="container__content-row" style="padding: 20px; width: 80%; z-index: 5;">
+
+                <div class="dropdown">
+                    <div class="dropbtn">Тепловые карты</div>
+                    <div class="dropdown-content">
+                        <div>
+                            <input type="checkbox" id="heat_map_postamats" name="heat_map_postamats">
+                            <label for="heat_map_postamats">Тепловая карта постаматов</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="heat_map_houses" name="heat_map_houses">
+                            <label for="heat_map_houses">Тепловая карта домов</label>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="disselect" name="disselect">
+                    <label for="disselect">Выбрать район</label>
+                  </div>
+                  <div class="dropdown">
+                    <div class="dropbtn">Район</div>
+                    <div class="dropdown-content">
+                        <div class="select select--multiple">
+                            <select  id="selectiondistricts" multiple>
+                                <option value="0">район Внуково</option>
+                                <option value="1">район Кунцево</option>
+                                <option value="2">район Восточный</option>
+                                <option value="3">район Метрогородок</option>
+                                <option value="4">район Крылатское</option>
+                                <option value="5">Мещанский район</option>
+                                <option value="6">район Сокольники</option>
+                                <option value="7">район Хорошёво-Мнёвники</option>
+                                <option value="8">район Щукино</option>
+                                <option value="9">район Строгино</option>
+                                <option value="10">район Митино</option>
+                                <option value="11">район Куркино</option>
+                                <option value="12">район Кузьминки</option>
+                                <option value="13">Донской район</option>
+                                <option value="14">район Левобережный</option>
+                                <option value="15">район Ховрино</option>
+                                <option value="16">район Западное Дегунино</option>
+                                <option value="17">Тимирязевский район</option>
+                                <option value="18">район Коптево</option>
+                                <option value="19">Дмитровский район</option>
+                                <option value="20">район Северное Тушино</option>
+                                <option value="21">район Сокол</option>
+                                <option value="22">район Савёловский</option>
+                                <option value="23">район Отрадное</option>
+                                <option value="24">Молжаниновский район</option>
+                                <option value="25">район Северный</option>
+                                <option value="26">район Восточное Дегунино</option>
+                                <option value="27">Головинский район</option>
+                                <option value="28">район Беговой</option>
+                                <option value="29">Хорошёвский район</option>
+                                <option value="30">Войковский район</option>
+                                <option value="31">район Аэропорт</option>
+                                <option value="32">район Южное Тушино</option>
+                                <option value="33">район Покровское-Стрешнево</option>
+                                <option value="34">Бескудниковский район</option>
+                                <option value="35">Алтуфьевский район</option>
+                                <option value="36">район Лианозово</option>
+                                <option value="37">район Бибирево</option>
+                                <option value="38">район Северное Медведково</option>
+                                <option value="39">район Южное Медведково</option>
+                                <option value="40">район Фили-Давыдково</option>
+                                <option value="41">район Филёвский Парк</option>
+                                <option value="42">район Дорогомилово</option>
+                                <option value="43">район Раменки</option>
+                                <option value="44">район Солнцево</option>
+                                <option value="45">Ново-Переделкино</option>
+                                <option value="46">Ярославский район</option>
+                                <option value="47">район Ростокино</option>
+                                <option value="48">район Текстильщики</option>
+                                <option value="49">район Люблино</option>
+                                <option value="50">район Капотня</option>
+                                <option value="51">район Марьино</option>
+                                <option value="52">район Печатники</option>
+                                <option value="53">район Нагатинский Затон</option>
+                                <option value="54">район Москворечье-Сабурово</option>
+                                <option value="55">район Орехово-Борисово Северное</option>
+                                <option value="56">район Орехово-Борисово Южное</option>
+                                <option value="57">район Зябликово</option>
+                                <option value="58">район Братеево</option>
+                                <option value="59">район Нагатино-Садовники</option>
+                                <option value="60">Нагорный район</option>
+                                <option value="61">район Чертаново Северное</option>
+                                <option value="62">район Выхино-Жулебино</option>
+                                <option value="63">район Вешняки</option>
+                                <option value="64">район Бирюлёво Восточное</option>
+                                <option value="65">район Царицыно</option>
+                                <option value="66">район Бирюлёво Западное</option>
+                                <option value="67">район Чертаново Южное</option>
+                                <option value="68">район Чертаново Центральное</option>
+                                <option value="69">район Ясенево</option>
+                                <option value="70">район Тёплый Стан</option>
+                                <option value="71">район Коньково</option>
+                                <option value="72">Алексеевский район</option>
+                                <option value="73">район Свиблово</option>
+                                <option value="74">Останкинский район</option>
+                                <option value="75">район Марфино</option>
+                                <option value="76">район Марьина Роща</option>
+                                <option value="77">Лосиноостровский район</option>
+                                <option value="78">Бутырский район</option>
+                                <option value="79">Бабушкинский район</option>
+                                <option value="80">Рязанский район</option>
+                                <option value="81">район Косино-Ухтомский</option>
+                                <option value="82">район Некрасовка</option>
+                                <option value="83">район Новокосино</option>
+                                <option value="84">район Северное Измайлово</option>
+                                <option value="85">район Восточное Измайлово</option>
+                                <option value="86">район Замоскворечье</option>
+                                <option value="87">район Хамовники</option>
+                                <option value="88">Красносельский район</option>
+                                <option value="89">район Южное Бутово</option>
+                                <option value="90">район Северное Бутово</option>
+                                <option value="91">Можайский район</option>
+                                <option value="92">район Арбат</option>
+                                <option value="93">Тверской район</option>
+                                <option value="94">Пресненский район</option>
+                                <option value="95">Таганский район</option>
+                                <option value="96">район Якиманка</option>
+                                <option value="97">Нижегородский район</option>
+                                <option value="98">район Лефортово</option>
+                                <option value="99">Южнопортовый район</option>
+                                <option value="100">Даниловский район</option>
+                                <option value="101">Академический район</option>
+                                <option value="102">район Черёмушки</option>
+                                <option value="103">Гагаринский район</option>
+                                <option value="104">Ломоносовский район</option>
+                                <option value="105">район Котловка</option>
+                                <option value="106">район Зюзино</option>
+                                <option value="107">Обручевский район</option>
+                                <option value="108">район Проспект Вернадского</option>
+                                <option value="109">Тропарёво-Никулино</option>
+                                <option value="110">район Очаково-Матвеевское</option>
+                                <option value="111">район Новогиреево</option>
+                                <option value="112">район Перово</option>
+                                <option value="113">район Соколиная Гора</option>
+                                <option value="114">район Преображенское</option>
+                                <option value="115">район Богородское</option>
+                                <option value="116">район Гольяново</option>
+                                <option value="117">район Измайлово</option>
+                                <option value="118">район Ивановское</option>
+                                <option value="119">Басманный район</option>
+                                </select>
+                            </select>
+                            <span class="focus"></span>
+                          </div>
+                    </div>
+                  </div>
+                <div>
+                    <input type="checkbox" id="areaselect" name="disselect">
+                    <label for="areaselect">Выбрать округ</label>
+                </div>
+                  <div class="dropdown">
+                    <div class="dropbtn">Округ</div>
+                    <div class="dropdown-content">
+                        <div class="select">
+                            <select id="selectionarea">
+                                <option value="0">Северный административный округ</option>
+                                <option value="1">Юго-Восточный административный округ</option>
+                                <option value="2">Северо-Западный административный округ</option>
+                                <option value="3">Северо-Восточный административный округ</option>
+                                <option value="4">Южный административный округ</option>
+                                <option value="5">Юго-Западный административный округ</option>
+                                <option value="6">Центральный административный округ</option>
+                                <option value="7">Западный административный округ</option>
+                                <option value="8">Восточный административный округ</option>
+                            </select>
+                            <span class="focus"></span>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="dropdown">
+                    <div class="dropbtn">Объекты</div>
+                    <div class="dropdown-content">
+                        <div>
+                            <input type="checkbox" id="cultures_placemarks" name="cultures_placemarks">
+                            <label for="cultures_placemarks">Дома культуры</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="gosuslugies_placemarks" name="gosuslugies_placemarks">
+                            <label for="gosuslugies_placemarks">МФЦ</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="libraries_placemarks" name="libraries_placemarks">
+                            <label for="libraries_placemarks">Библиотеки</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="prints_placemarks" name="prints_placemarks">
+                            <label for="prints_placemarks">Печатные</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="shops_placemarks" name="shops_placemarks">
+                            <label for="shops_placemarks">Торговые объекты</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="sports_placemarks" name="sports_placemarks">
+                            <label for="sports_placemarks">Спортивные комплексы</label>
+                        </div>
+                    </div>
+                  </div>
+                  
+                  <div class="dropdown">
+                    <div class="dropbtn">Партнёры</div>
+                    <div class="dropdown-content">
+                        <div class="select select--multiple">
+                            <select id="multi-select" multiple>
+                              <option value="Option 1">Option 1</option>
+                              <option value="Option 2">Option 2</option>
+                              <option value="Option 3">Option 3</option>
+                              <option value="Option 4">Option 4</option>
+                              <option value="Option 5">Option 5</option>
+                              <option value="Option length">Option that has too long of a value to fit</option>
+                            </select>
+                            <span class="focus"></span>
+                          </div>
+                    </div>
+                  </div>
+
+                  <div class="dropdown">
+                    <div class="dropbtn">Модели расчёта</div>
+                    <div class="dropdown-content">
+                        <div class="select select--multiple">
+                            <select id="selectionarea">
+                                <option value="0">Северный административный округ</option>
+                                <option value="1">Юго-Восточный административный округ</option>
+                                <option value="2">Северо-Западный административный округ</option>
+                                <option value="3">Северо-Восточный административный округ</option>
+                                <option value="4">Южный административный округ</option>
+                                <option value="5">Юго-Западный административный округ</option>
+                                <option value="6">Центральный административный округ</option>
+                                <option value="7">Западный административный округ</option>
+                                <option value="8">Восточный административный округ</option>
+                            </select>
+                            <span class="focus"></span>
+                          </div>
+                    </div>
+                  </div>
+                  
+            </div>
+            <div class="container__content-row" style="padding: 30px; width: 80%;">
+                <div class="range-slider">
+                    <input  id="radiusSlider" class="range-slider__range" type="range" value="100" min="0" max="2500">
+                    <span class="range-slider__value">100</span>
+                </div>
+            </div>
+            <div class="content__hr-top-2" style="margin-top: 0px; margin-left: 0px; background-color: #E3051D;height: 8px; width: 100%;"></div>
+            
+            
+            <!-- PASTE MAP HERE!! -->
+            <!-- PASTE MAP HERE!! -->
+            <!-- PASTE MAP HERE!! -->
+            <!-- PASTE MAP HERE!! -->
+            <!-- PASTE MAP HERE!! -->
+
+
+            <div class="content__hr-top-2" style="margin-top: 0px; margin-left: 0px; background-color: #E3051D;height: 8px; width: 100%;"></div>
+            <div class="container__content-row">
+                <div class="container__content-column" style="margin: 10px;">
+                    <div class="btn-container" style="--btn-bg: green;">
+                        <button style="background-color: #290C12;">
+                            <span class="text" style="font-family: Avante;">Расчёт</span>
+                            <div class="icon-container">
+                                <div class="icon icon--left">
+                                    <svg>
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                </div>
+                                <div class="icon icon--right">
+                                    <svg>
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <svg style="display: none;">
+                        <symbol id="arrow-right" viewBox="0 0 20 10">
+                            <path d="M14.84 0l-1.08 1.06 3.3 3.2H0v1.49h17.05l-3.3 3.2L14.84 10 20 5l-5.16-5z"></path>
+                        </symbol>
+                    </svg>
+                </div>
+                <div class="container__content-column"  style="margin: 10px;">
+                    <div class="btn-container">
+                        <button id="button-reset" style="background-color: #290C12;">
+                            <span class="text" style="font-family: Avante;">Сброс</span>
+                            <div class="icon-container">
+                                <div class="icon icon--left">
+                                    <svg>
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                </div>
+                                <div class="icon icon--right">
+                                    <svg>
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <svg style="display: none;">
+                        <symbol id="arrow-right" viewBox="0 0 20 10">
+                            <path d="M14.84 0l-1.08 1.06 3.3 3.2H0v1.49h17.05l-3.3 3.2L14.84 10 20 5l-5.16-5z"></path>
+                        </symbol>
+                    </svg>
+                </div>
+            </div>
+            <div class="container__content-row">
+                <div class="container__content-column" style="margin: 10px;">
+                    <div class="btn-container" style="--btn-bg: #65606A;">
+                        <button style="background-color: #290C12;">
+                            <span class="text" style="font-family: Avante;">PDF</span>
+                            <div class="icon-container">
+                                <div class="icon icon--left">
+                                    <svg>
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                </div>
+                                <div class="icon icon--right">
+                                    <svg>
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <svg style="display: none;">
+                        <symbol id="arrow-right" viewBox="0 0 20 10">
+                            <path d="M14.84 0l-1.08 1.06 3.3 3.2H0v1.49h17.05l-3.3 3.2L14.84 10 20 5l-5.16-5z"></path>
+                        </symbol>
+                    </svg>
+                </div>
+                <div class="container__content-column"  style="margin: 10px;">
+                    <div class="btn-container" style="--btn-bg: #65606A;">
+                        <button style="background-color: #290C12;">
+                            <span class="text" style="font-family: Avante;">CSV</span>
+                            <div class="icon-container">
+                                <div class="icon icon--left">
+                                    <svg>
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                </div>
+                                <div class="icon icon--right">
+                                    <svg>
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <svg style="display: none;">
+                        <symbol id="arrow-right" viewBox="0 0 20 10">
+                            <path d="M14.84 0l-1.08 1.06 3.3 3.2H0v1.49h17.05l-3.3 3.2L14.84 10 20 5l-5.16-5z"></path>
+                        </symbol>
+                    </svg>
+                </div>
+                <div class="container__content-column"  style="margin: 10px;">
+                    <div class="btn-container" style="--btn-bg: #65606A;">
+                        <button style="background-color: #290C12;">
+                            <span class="text" style="font-family: Avante;">PNG</span>
+                            <div class="icon-container">
+                                <div class="icon icon--left">
+                                    <svg>
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                </div>
+                                <div class="icon icon--right">
+                                    <svg>
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <svg style="display: none;">
+                        <symbol id="arrow-right" viewBox="0 0 20 10">
+                            <path d="M14.84 0l-1.08 1.06 3.3 3.2H0v1.49h17.05l-3.3 3.2L14.84 10 20 5l-5.16-5z"></path>
+                        </symbol>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <footer class="content" id="content-wave" style="padding-top: 0px; margin-top: 0px; padding-top: 20px">
+            <div class="container__content-row">
+                <div class="container__content-row" style="max-width: 50%; align-items: center; vertical-align: middle; justify-content: center; display: flex; flex-direction: row;">
+                    <div class="content__footer-mos">
+                        <img src="{% static 'site_files/png_/png для сайта/logo_dpir-white.png' %}" alt="Mos-Logo-Dir">
+                    </div>
+                    <div class="content__p1-top" style="margin-top: 0px; font-family: Bahnschrift; font-weight: 200; justify-content: center; vertical-align: middle; align-items:center; display: flex; text-align: center;">
+                        <p>all rights reserved</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="container__wave" style="z-index: 2;">
+                <img src="png_/wave_header/wave.svg" alt="wave">
+            </div> -->
+        </footer>
+    </div>
+    <script src="{% static 'site_files/script.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        var rangeSlider = function(){
+    var slider = $('.range-slider'),
+        range = $('.range-slider__range'),
+        value = $('.range-slider__value');
+    slider.each(function(){
+  
+      value.each(function(){
+        var value = $(this).prev().attr('value');
+        $(this).html(value + 'm');
+      });
+  
+      range.on('input', function(){
+        $(this).next(value).html(this.value + 'm');
+      });
+    });
+  };
+  
+  rangeSlider();
+    </script>
+    <!--<script type="text/javascript">
+        if (window.jQuery) alert("jQuery подключен");
+        else alert("jQuery не подключен");
+    </script>-->
+</body>
+</html>
