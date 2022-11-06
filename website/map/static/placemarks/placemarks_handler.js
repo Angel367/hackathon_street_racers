@@ -12,7 +12,7 @@ export function placemarks_handler(myMap) {
     const prints_arr = get_prints_arr();
     const shops_arr = get_shops_arr();
     const sports_arr = get_sports_arr()
-
+        /*
     document.getElementById("cultures_placemarks").onchange = function () {
         if(document.getElementById("cultures_placemarks").checked) {
             cultures_arr.forEach(function (item) {
@@ -84,5 +84,5 @@ export function placemarks_handler(myMap) {
                 myMap.geoObjects.remove(item);
             });
         }
-    }
+    }*/
 }

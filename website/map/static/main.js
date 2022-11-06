@@ -131,9 +131,30 @@ ymaps.ready(['polylabel.create']).then(function () {
                     radius: 10,
                 })
             heatmap.setMap(myMap);
+            document.getElementById("reset").onclick = function () {
+                heatmap.destroy();
+                myMap.geoObjects.removeAll()
+            }
         })
+        neuro_data[1].forEach(function (item) {
+            myMap.geoObjects.add(item);
+        });
+        neuro_data[2].forEach(function (item) {
+            myMap.geoObjects.add(item);
+        });
+        neuro_data[3].forEach(function (item) {
+            myMap.geoObjects.add(item);
+        });
+        neuro_data[4].forEach(function (item) {
+            myMap.geoObjects.add(item);
+        });
+        neuro_data[5].forEach(function (item) {
+            myMap.geoObjects.add(item);
+        });
+        neuro_data[6].forEach(function (item) {
+            myMap.geoObjects.add(item);
+        });
     }
-
 
     function reDrawCircle(event) {
         if(myCircle.geometry.getRadius() === -1 && !event) return
@@ -161,7 +182,7 @@ ymaps.ready(['polylabel.create']).then(function () {
             reDrawCircle(event)
         }
     );
-    placemarks_handler(myMap)
+    //placemarks_handler(myMap)
 })
 
 
