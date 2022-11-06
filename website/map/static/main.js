@@ -10,6 +10,7 @@ import {get_prints_arr} from "./placemarks/prints/get_prints_arr.js";
 import {get_sports_arr} from "./placemarks/sports/get_sports_arr.js";
 import {get_shops_arr} from "./placemarks/shops/get_shops_arr.js";
 import {placemarks_handler} from "./placemarks/placemarks_handler.js";
+import {get_neuro_data} from "./get_neuro_data.js";
 
 ymaps.ready(['polylabel.create']).then(function () {
     const myMap = new ymaps.Map("map", {
@@ -102,12 +103,14 @@ ymaps.ready(['polylabel.create']).then(function () {
         });
     });
     ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
+
         var data = houses_data,
             heatmap = new Heatmap(data, {
                 radius: 10,
             });
         document.getElementById("heat_map_houses").onchange = function () {
             if(document.getElementById("heat_map_houses").checked) {
+                console.log(houses_data)
                 heatmap.setMap(myMap)
             }
             else {
@@ -120,6 +123,17 @@ ymaps.ready(['polylabel.create']).then(function () {
             }
         });
     });
+    document.getElementById("execute").onclick = async function () {
+        let neuro_data = await get_neuro_data()
+        ymaps.modules.require(['Heatmap'], function (Heatmap) {     // Тепловая карта
+            var data = neuro_data[0],
+                heatmap = new Heatmap(data, {
+                    radius: 10,
+                })
+            heatmap.setMap(myMap);
+        })
+    }
+
 
     function reDrawCircle(event) {
         if(myCircle.geometry.getRadius() === -1 && !event) return
@@ -139,6 +153,8 @@ ymaps.ready(['polylabel.create']).then(function () {
         document.getElementById('rangeValue').innerHTML = this.value;
         reDrawCircle()
     }
+
+
 
     myMap.events.add('click',
         function (event) {
